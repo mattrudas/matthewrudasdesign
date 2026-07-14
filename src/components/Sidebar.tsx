@@ -3,7 +3,7 @@ import RichText from "./RichText";
 
 export default function Sidebar() {
   return (
-    <aside className="flex flex-col lg:sticky lg:top-0 lg:h-screen lg:max-h-screen lg:pt-6 lg:pb-[72px]">
+    <aside className="flex flex-col lg:sticky lg:top-0 lg:h-screen lg:max-h-screen lg:pt-6 lg:pb-[72px] lg:pl-16 lg:pr-16">
       {/* Top: nav + avatar */}
       <div>
         <nav className="flex items-center gap-10 sm:gap-20" id="about">
@@ -31,14 +31,14 @@ export default function Sidebar() {
       </div>
 
       {/* Bottom: intro + CTA */}
-      <div className="mt-12 max-w-[660px] lg:mt-auto">
+      <div className="mt-12 w-full lg:mt-auto">
         <h1 className="text-[28px] leading-snug font-normal text-balance sm:text-[32px]">
           {intro.headingLead}
           <span className="text-accent">{intro.headingName}</span>
           {intro.headingRest}
         </h1>
 
-        <div className="mt-10 flex max-w-[660px] gap-4">
+        <div className="mt-10 flex w-full gap-4">
           <span aria-hidden="true" className="w-px shrink-0 self-stretch bg-border" />
           <div className="space-y-3 text-muted-strong">
             {intro.paragraphs.map((paragraph, i) => (

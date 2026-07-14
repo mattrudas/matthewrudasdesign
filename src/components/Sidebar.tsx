@@ -3,7 +3,7 @@ import RichText from "./RichText";
 
 export default function Sidebar() {
   return (
-    <aside className="flex flex-col lg:sticky lg:top-0 lg:h-screen lg:max-h-screen lg:py-[72px]">
+    <aside className="flex flex-col lg:sticky lg:top-0 lg:h-screen lg:max-h-screen lg:pt-6 lg:pb-[72px]">
       {/* Top: nav + avatar */}
       <div>
         <nav className="flex items-center gap-10 sm:gap-20" id="about">

@@ -55,8 +55,19 @@ export default function Sidebar() {
           className="mt-9 inline-flex items-center gap-2 rounded-full bg-button px-6 py-2 text-button-contrast transition-transform hover:-translate-y-0.5"
         >
           Talk to me
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/arrow-up-right.svg" alt="" aria-hidden="true" className="h-4 w-4" />
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 32 32"
+            fill="none"
+            aria-hidden="true"
+            className="h-4 w-4"
+          >
+            <path
+              d="M25 8V21C25 21.2652 24.8946 21.5196 24.7071 21.7071C24.5196 21.8946 24.2652 22 24 22C23.7348 22 23.4804 21.8946 23.2929 21.7071C23.1054 21.5196 23 21.2652 23 21V10.4137L8.7075 24.7075C8.51986 24.8951 8.26536 25.0006 8 25.0006C7.73464 25.0006 7.48014 24.8951 7.2925 24.7075C7.10486 24.5199 6.99944 24.2654 6.99944 24C6.99944 23.7346 7.10486 23.4801 7.2925 23.2925L21.5863 9H11C10.7348 9 10.4804 8.89464 10.2929 8.70711C10.1054 8.51957 10 8.26522 10 8C10 7.73478 10.1054 7.48043 10.2929 7.29289C10.4804 7.10536 10.7348 7 11 7H24C24.2652 7 24.5196 7.10536 24.7071 7.29289C24.8946 7.48043 25 7.73478 25 8Z"
+              fill="currentColor"
+            />
+          </svg>
         </a>
       </div>
     </aside>

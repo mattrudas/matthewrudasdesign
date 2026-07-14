@@ -13,8 +13,8 @@ export default function Home() {
   };
 
   return (
-    <div className="mx-auto max-w-[1512px] px-6 pt-6 pb-10 lg:py-0 lg:pl-10 lg:pr-0">
-      <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,788px)] lg:gap-10">
+    <div className="px-6 pt-6 pb-10 lg:px-0 lg:py-0">
+      <div className="grid gap-12 lg:grid-cols-2 lg:gap-10">
         <Sidebar />
 
         <main id="resume" className="min-w-0 lg:pb-[72px]">

@@ -10,7 +10,7 @@ export const site = {
   email: "hello@matthewrudas.design",
   resumeUrl: "#",
   /** Avatar image placed in /public. */
-  avatar: "/avatar.png",
+  avatar: "/avatar.gif",
 } as const;
 
 export const nav = [

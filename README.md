@@ -50,7 +50,7 @@ The mockups and avatar are exported straight from Figma and committed under
 
 - Project mockups live in `public/work/` (e.g. `public/work/checkmate-app.png`)
   and are referenced via each project's `image` field in `content.ts`.
-- The profile photo is `public/avatar.png`, referenced by `site.avatar`.
+- The profile photo is the animated `public/avatar.gif`, referenced by `site.avatar`.
 
 To swap an image, drop a replacement into `public/` and update the matching path
 in `content.ts`.

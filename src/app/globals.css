@@ -4,15 +4,17 @@
  * Design tokens
  * ------------------------------------------------------------------ */
 :root {
+  /* Colors sampled directly from the Figma design */
   --background: #ffffff;
-  --foreground: #1c1b1a;
-  --muted: #9a9793;
-  --muted-strong: #6f6c67;
-  --border: #ececec;
+  --foreground: #000000;
+  --muted: #979797; /* project period */
+  --muted-strong: #4e4e4e; /* intro paragraphs */
+  --tag: #8b8a8d; /* project tags */
+  --description: #5f6368; /* project descriptions */
+  --border: #e5e5e5;
   --surface: #efeeec;
-  --surface-dark: #1d1d1b;
-  --accent: #5f8a52;
-  --button: #1c1b1a;
+  --accent: #005c15; /* highlighted name */
+  --button: #000000;
   --button-contrast: #ffffff;
   color-scheme: light;
 }
@@ -22,14 +24,14 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-muted-strong: var(--muted-strong);
+  --color-tag: var(--tag);
+  --color-description: var(--description);
   --color-border: var(--border);
   --color-surface: var(--surface);
-  --color-surface-dark: var(--surface-dark);
   --color-accent: var(--accent);
   --color-button: var(--button);
   --color-button-contrast: var(--button-contrast);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-roboto-flex);
 }
 
 /* ------------------------------------------------------------------ *
@@ -43,8 +45,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }

@@ -13,12 +13,12 @@ export default function Home() {
   };
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-10 lg:px-10 lg:py-0">
-      <div className="grid gap-12 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
+    <div className="mx-auto max-w-[1512px] px-6 py-10 lg:px-10 lg:py-0">
+      <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,788px)] lg:gap-10">
         <Sidebar />
 
-        <main id="resume" className="min-w-0 lg:py-14">
-          <div className="space-y-16">
+        <main id="resume" className="min-w-0 lg:py-[72px]">
+          <div className="space-y-8">
             {projects.map((project) => (
               <ProjectItem key={project.slug} project={project} />
             ))}

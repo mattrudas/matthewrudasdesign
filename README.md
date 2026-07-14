@@ -3,9 +3,10 @@
 Personal portfolio site for **Matthew Rudas** — Lead Designer at Checkmate.
 
 Built from the Figma design with [Next.js 16](https://nextjs.org) (App Router),
-TypeScript, and [Tailwind CSS v4](https://tailwindcss.com). It's a fast,
-responsive, two-column portfolio: a sticky left sidebar (intro + contact) and a
-scrolling column of selected work.
+TypeScript, [Tailwind CSS v4](https://tailwindcss.com), and the
+[Roboto Flex](https://fonts.google.com/specimen/Roboto+Flex) variable font. It's
+a fast, responsive, two-column portfolio: a sticky left sidebar (intro + contact)
+and a scrolling column of selected work.
 
 ## Getting started
 
@@ -34,23 +35,25 @@ src/lib/content.ts
 ```
 
 - `site` — name, role, company, email, résumé link, and the avatar path.
-- `intro` — the "Hello! I am…" heading and paragraphs (use `**text**` for bold).
-- `projects` — the work list (title, tags, period, description, and a `kind`
-  that selects the built-in mockup visual).
+- `intro` — the "Hello! I am…" heading and paragraphs. Inline markup supports
+  `**bold**` and `[label](url)` links.
+- `projects` — the work list (title, tags, period, description, and the `image`
+  path for the project mockup).
 
 Adjust the color palette (background, accent green, etc.) via the CSS tokens in
 `src/app/globals.css`.
 
-### Real images & avatar
+### Images & avatar
 
-The project thumbnails use lightweight CSS placeholders that echo the design.
-To use real exports:
+The mockups and avatar are exported straight from Figma and committed under
+`public/`:
 
-1. Drop an image into `public/` (e.g. `public/work/app.png`).
-2. Set `image: "/work/app.png"` on that project in `content.ts`.
+- Project mockups live in `public/work/` (e.g. `public/work/checkmate-app.png`)
+  and are referenced via each project's `image` field in `content.ts`.
+- The profile photo is `public/avatar.png`, referenced by `site.avatar`.
 
-For the profile photo, add `public/avatar.jpg` and set `avatar: "/avatar.jpg"`
-in `site`. Otherwise a gradient placeholder is shown.
+To swap an image, drop a replacement into `public/` and update the matching path
+in `content.ts`.
 
 ## Structure
 
@@ -65,9 +68,8 @@ src/
 │   └── sitemap.ts      # sitemap.xml route
 ├── components/
 │   ├── Sidebar.tsx     # nav, avatar, intro, "Talk to me"
-│   ├── ProjectItem.tsx # a single work entry
-│   ├── ProjectMock.tsx # CSS placeholder visuals per project kind
-│   ├── RichText.tsx    # renders **bold** inline
+│   ├── ProjectItem.tsx # a single work entry (mockup image + text)
+│   ├── RichText.tsx    # renders **bold** and [label](url) inline
 │   └── Reveal.tsx      # subtle scroll-in animation
 └── lib/
     └── content.ts      # all editable site content

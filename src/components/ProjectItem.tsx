@@ -4,7 +4,7 @@ import Reveal from "./Reveal";
 export default function ProjectItem({ project }: { project: Project }) {
   return (
     <Reveal as="article">
-      <div className="aspect-[788/364] w-full overflow-hidden rounded-2xl bg-surface">
+      <div className="aspect-[788/364] w-full overflow-hidden bg-surface">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={project.image}
@@ -13,7 +13,7 @@ export default function ProjectItem({ project }: { project: Project }) {
         />
       </div>
 
-      <div className="px-4 pt-4">
+      <div className="pt-4">
         <div className="flex items-start justify-between gap-4">
           <div className="flex flex-col gap-1">
             <h2 className="text-base text-foreground">{project.title}</h2>

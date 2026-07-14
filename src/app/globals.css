@@ -5,7 +5,7 @@
  * ------------------------------------------------------------------ */
 :root {
   /* Colors sampled directly from the Figma design */
-  --background: #ffffff;
+  --background: #f4f4f4;
   --foreground: #000000;
   --muted: #979797; /* project period */
   --muted-strong: #4e4e4e; /* intro paragraphs */

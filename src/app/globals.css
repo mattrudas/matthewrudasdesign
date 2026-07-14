@@ -39,13 +39,23 @@
  * ------------------------------------------------------------------ */
 html {
   scroll-behavior: smooth;
-  /* Hide the scrollbar while keeping scroll functionality */
+}
+
+/* Hide the scrollbar (incl. the page scrollbar on the right) while keeping
+ * scroll functionality, across browsers and every scroll container. */
+html,
+body,
+* {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE / legacy Edge */
 }
 
-html::-webkit-scrollbar {
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
+  width: 0;
+  height: 0;
 }
 
 body {

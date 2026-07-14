@@ -17,7 +17,7 @@ export default function Home() {
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,788px)] lg:gap-10">
         <Sidebar />
 
-        <main id="resume" className="min-w-0 lg:py-[72px]">
+        <main id="resume" className="min-w-0 lg:pb-[72px]">
           <div className="space-y-8">
             {projects.map((project) => (
               <ProjectItem key={project.slug} project={project} />

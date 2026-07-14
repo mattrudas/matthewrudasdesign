@@ -5,9 +5,8 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 type RevealProps = {
   children: ReactNode;
   className?: string;
-  /** Delay in ms before the element animates in. */
   delay?: number;
-  as?: "div" | "section" | "li" | "article" | "header" | "footer";
+  as?: "div" | "section" | "li" | "article" | "header" | "footer" | "aside";
 };
 
 export default function Reveal({
@@ -23,8 +22,6 @@ export default function Reveal({
     const node = ref.current;
     if (!node) return;
 
-    // Reduced motion is handled entirely in CSS (elements render visible),
-    // so we only wire up the observer when animation is appropriate.
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
@@ -41,7 +38,7 @@ export default function Reveal({
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.1, rootMargin: "0px 0px -6% 0px" },
     );
 
     observer.observe(node);

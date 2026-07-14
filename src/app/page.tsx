@@ -1,12 +1,6 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
-import Work from "@/components/Work";
-import About from "@/components/About";
-import Services from "@/components/Services";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import { site } from "@/lib/content";
+import Sidebar from "@/components/Sidebar";
+import ProjectItem from "@/components/ProjectItem";
+import { projects, site } from "@/lib/content";
 
 export default function Home() {
   const jsonLd = {
@@ -14,35 +8,28 @@ export default function Home() {
     "@type": "Person",
     name: site.name,
     jobTitle: site.role,
+    worksFor: { "@type": "Organization", name: site.company },
     email: `mailto:${site.email}`,
-    address: { "@type": "PostalAddress", addressLocality: site.location },
-    sameAs: site.socials
-      .filter((s) => s.href.startsWith("http"))
-      .map((s) => s.href),
   };
 
   return (
-    <>
-      <a
-        href="#work"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-foreground focus:px-4 focus:py-2 focus:text-background"
-      >
-        Skip to content
-      </a>
-      <Header />
-      <main className="flex-1">
-        <Hero />
-        <Marquee />
-        <Work />
-        <About />
-        <Services />
-        <Contact />
-      </main>
-      <Footer />
+    <div className="mx-auto max-w-6xl px-6 py-10 lg:px-10 lg:py-0">
+      <div className="grid gap-12 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
+        <Sidebar />
+
+        <main id="resume" className="min-w-0 lg:py-14">
+          <div className="space-y-16">
+            {projects.map((project) => (
+              <ProjectItem key={project.slug} project={project} />
+            ))}
+          </div>
+        </main>
+      </div>
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    </>
+    </div>
   );
 }

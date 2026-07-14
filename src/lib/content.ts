@@ -5,146 +5,109 @@
 
 export const site = {
   name: "Matthew Rudas",
-  role: "Product & Brand Designer",
-  location: "Toronto, Canada",
+  role: "Lead Designer",
+  company: "Checkmate",
   email: "hello@matthewrudas.design",
-  tagline:
-    "I design clear, human products and brands that help teams ship work they're proud of.",
-  availability: "Available for select freelance projects",
+  /** Link used on the highlighted name in the intro. */
+  nameLink: "https://www.linkedin.com/",
   resumeUrl: "#",
-  socials: [
-    { label: "Email", href: "mailto:hello@matthewrudas.design" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/" },
-    { label: "Dribbble", href: "https://dribbble.com/" },
-    { label: "Read.cv", href: "https://read.cv/" },
-  ],
+  /** Optional avatar image placed in /public. Leave empty to show a gradient placeholder. */
+  avatar: "",
 } as const;
 
 export const nav = [
-  { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
+  { label: "Resume", href: "#resume" },
   { label: "Contact", href: "#contact" },
 ] as const;
+
+/**
+ * The intro paragraphs. Use `**text**` to bold portions inline.
+ */
+export const intro = {
+  headingLead: "Hello! I am ",
+  headingAfterName: ", a lead designer at ",
+  headingCompanyBold: "Checkmate",
+  headingEnd: " and a nice guy.",
+  paragraphs: [
+    "I took a leave of absence at **UCLA Law School** 5 years ago and started an apprenticeship with an agency that helps early stage designers and start ups called **Uppestudy**.",
+    "I was paired with a team of 3 cofounders to lead design for a company called **Checkmate**. We now have over 2 millions users, reach hundreds of thousands people a day, have a growing team of 30, and are recently profitable.",
+    "I have been learning quickly, failing often, and building new things every single day. Over the years, Checkmate has grown and myself alongside it. I love the challenge of starting from scratch and seeing products transform.",
+  ],
+} as const;
+
+export type ProjectKind =
+  | "phones"
+  | "extension"
+  | "grid"
+  | "browser"
+  | "brand"
+  | "shop";
 
 export type Project = {
   slug: string;
   title: string;
-  category: string;
-  year: string;
-  summary: string;
-  tags: string[];
-  href: string;
-  accent: string;
+  tags: string;
+  period: string;
+  description: string;
+  kind: ProjectKind;
+  /** Optional real image placed in /public that overrides the built-in mock. */
+  image?: string;
 };
 
 export const projects: Project[] = [
   {
-    slug: "northwind",
-    title: "Northwind",
-    category: "Product Design · 0→1",
-    year: "2025",
-    summary:
-      "Reimagined the onboarding and dashboard for a B2B logistics platform, cutting time-to-first-value from days to minutes.",
-    tags: ["Product", "Design System", "Research"],
-    href: "#",
-    accent: "linear-gradient(135deg, #d8562b 0%, #f2a03d 100%)",
-  },
-  {
-    slug: "lumen",
-    title: "Lumen Health",
-    category: "Brand & Web",
-    year: "2024",
-    summary:
-      "A calming identity and marketing site for a preventative-care startup, balancing clinical trust with warmth.",
-    tags: ["Branding", "Web", "Motion"],
-    href: "#",
-    accent: "linear-gradient(135deg, #2f6d63 0%, #7bc1ac 100%)",
-  },
-  {
-    slug: "cadence",
-    title: "Cadence",
-    category: "Mobile App",
-    year: "2024",
-    summary:
-      "An interval-training companion with a focus-first interface and haptic-driven workouts people actually finish.",
-    tags: ["iOS", "Prototyping", "UX"],
-    href: "#",
-    accent: "linear-gradient(135deg, #3a3f8f 0%, #8a7cf0 100%)",
-  },
-  {
-    slug: "atlas",
-    title: "Atlas Studio",
-    category: "Design System",
-    year: "2023",
-    summary:
-      "Built a token-driven component library adopted by four product teams, unifying a fragmented experience.",
-    tags: ["Systems", "Tokens", "Docs"],
-    href: "#",
-    accent: "linear-gradient(135deg, #b4472b 0%, #e0894b 100%)",
-  },
-];
-
-export const services = [
-  {
-    title: "Product Design",
+    slug: "app",
+    title: "Checkmate App",
+    tags: "product design, brand design, user research",
+    period: "2022 — 2026",
     description:
-      "From messy problem to shippable interface — flows, wireframes, high-fidelity UI, and prototypes that de-risk decisions.",
+      "0 → 2M+ downloads from my initial wireframes to our current mobile experience. Through many transformations the app centers on accruing rewards, referrals, discounts, wish listing and order tracking. 4.7/5 stars in the App Store.",
+    kind: "phones",
   },
   {
-    title: "Design Systems",
+    slug: "extension",
+    title: "Checkmate Extension",
+    tags: "product design, brand design, user research",
+    period: "2022 — 2026",
     description:
-      "Scalable, token-driven component libraries and documentation that keep design and engineering in sync.",
+      "Our beta product with 250k+ MAUs and millions in $ saved. The extension covers a consumer's e-commerce journey serving as a cohesive experience for discounts, wish listing, and personalized discount offers at partner sites.",
+    kind: "extension",
   },
   {
-    title: "Brand & Identity",
+    slug: "lifecycle",
+    title: "Checkmate Lifecycle",
+    tags: "product design, brand design, user nurturing",
+    period: "2022 — 2026",
     description:
-      "Logos, type, color, and voice — cohesive systems that make a product feel intentional from the first pixel.",
+      "Designed end-to-end user lifecycle flow for outreach across multiple surfaces. Created flows to power growth between our B2B product into our consumer ecosystem.",
+    kind: "grid",
   },
   {
-    title: "Prototyping & Motion",
+    slug: "brands",
+    title: "Checkmate for Brands",
+    tags: "brand onboarding, dashboard design, market research, user research, landing pages, site coding",
+    period: "2022 — 2026",
     description:
-      "Interactive prototypes and micro-interactions that communicate intent and bring static screens to life.",
-  },
-];
-
-export const stats = [
-  { value: "9+", label: "Years designing" },
-  { value: "40+", label: "Products shipped" },
-  { value: "12", label: "Industries" },
-];
-
-export const clients = [
-  "Northwind",
-  "Lumen",
-  "Cadence",
-  "Atlas",
-  "Meridian",
-  "Fieldwork",
-  "Kindred",
-  "Overpass",
-];
-
-export const timeline = [
-  {
-    period: "2022 — Now",
-    role: "Independent Design Partner",
-    org: "Freelance",
-    detail:
-      "Partnering with founders and product teams on end-to-end design, from first concept to launch.",
+      "Our partner product allows Shopify brands to work with our AI Network to retarget users from their site they would not have recognized. They can reach consumers on our channels or their own, leveraging our robust understanding of anonymous site visitors.",
+    kind: "browser",
   },
   {
-    period: "2019 — 2022",
-    role: "Senior Product Designer",
-    org: "Meridian",
-    detail:
-      "Led design for the core analytics suite and established the company's first shared design system.",
+    slug: "brand",
+    title: "Checkmate Brand",
+    tags: "brand design, graphic design, design systems, deck design",
+    period: "2022 — 2026",
+    description:
+      "Evolved a robust design system across two separate products. Created consistent style guidelines to be used across all product design, brand design, and sales collateral. Designed decks used to raise from Google Ventures, Menlo, and more.",
+    kind: "brand",
   },
   {
-    period: "2016 — 2019",
-    role: "Product Designer",
-    org: "Fieldwork Labs",
-    detail:
-      "Shipped mobile and web experiences across fintech and healthcare for early-stage startups.",
+    slug: "shop",
+    title: "Checkmate Shop",
+    tags: "product design, brand design, user research",
+    period: "2022 — 2026",
+    description:
+      "A curated shopping surface pairing personalized offers with editorial product discovery — turning everyday browsing into rewarding purchases across our partner network.",
+    kind: "shop",
   },
 ];

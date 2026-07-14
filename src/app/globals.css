@@ -4,64 +4,37 @@
  * Design tokens
  * ------------------------------------------------------------------ */
 :root {
-  --background: #f7f5f2;
-  --surface: #ffffff;
-  --foreground: #16130f;
-  --muted: #6b655c;
-  --border: #e6e1d8;
-  --accent: #d8562b;
-  --accent-contrast: #ffffff;
-  --ring: rgba(216, 86, 43, 0.35);
+  --background: #ffffff;
+  --foreground: #1c1b1a;
+  --muted: #9a9793;
+  --muted-strong: #6f6c67;
+  --border: #ececec;
+  --surface: #efeeec;
+  --surface-dark: #1d1d1b;
+  --accent: #5f8a52;
+  --button: #1c1b1a;
+  --button-contrast: #ffffff;
   color-scheme: light;
-}
-
-/* Dark tokens shared by explicit toggle and system preference */
-.theme-dark {
-  --background: #0d0c0b;
-  --surface: #171513;
-  --foreground: #f4f1ec;
-  --muted: #a29b8f;
-  --border: #2a2723;
-  --accent: #f0663b;
-  --accent-contrast: #16130f;
-  --ring: rgba(240, 102, 59, 0.4);
-  color-scheme: dark;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not(.theme-light) {
-    --background: #0d0c0b;
-    --surface: #171513;
-    --foreground: #f4f1ec;
-    --muted: #a29b8f;
-    --border: #2a2723;
-    --accent: #f0663b;
-    --accent-contrast: #16130f;
-    --ring: rgba(240, 102, 59, 0.4);
-    color-scheme: dark;
-  }
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
+  --color-muted-strong: var(--muted-strong);
   --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-surface-dark: var(--surface-dark);
   --color-accent: var(--accent);
-  --color-accent-contrast: var(--accent-contrast);
+  --color-button: var(--button);
+  --color-button-contrast: var(--button-contrast);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-display);
 }
 
 /* ------------------------------------------------------------------ *
  * Base
  * ------------------------------------------------------------------ */
-* {
-  border-color: var(--border);
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -70,16 +43,17 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
   background: var(--accent);
-  color: var(--accent-contrast);
+  color: #ffffff;
 }
 
-/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -88,33 +62,20 @@ body {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
 
 /* ------------------------------------------------------------------ *
- * Utilities & animations
+ * Utilities
  * ------------------------------------------------------------------ */
 .text-balance {
   text-wrap: balance;
 }
 
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(1.25rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Reveal-on-scroll: elements start hidden and animate in when .is-visible is added */
 .reveal {
   opacity: 0;
-  transform: translateY(1.5rem);
+  transform: translateY(1rem);
   transition:
     opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
@@ -130,18 +91,5 @@ body {
   .reveal {
     opacity: 1;
     transform: none;
-  }
-}
-
-.marquee-track {
-  animation: marquee 32s linear infinite;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
   }
 }

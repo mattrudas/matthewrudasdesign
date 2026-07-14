@@ -56,7 +56,7 @@ export default function Sidebar() {
         >
           Talk to me
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/arrow-right.svg" alt="" aria-hidden="true" className="h-4 w-4" />
+          <img src="/arrow-up-right.svg" alt="" aria-hidden="true" className="h-4 w-4" />
         </a>
       </div>
     </aside>

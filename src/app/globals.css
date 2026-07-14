@@ -39,6 +39,13 @@
  * ------------------------------------------------------------------ */
 html {
   scroll-behavior: smooth;
+  /* Hide the scrollbar while keeping scroll functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE / legacy Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
 }
 
 body {

@@ -19,7 +19,7 @@ export default function ProjectItem({ project }: { project: Project }) {
             <h2 className="text-base text-foreground">{project.title}</h2>
             <p className="text-sm text-tag">{project.tags}</p>
           </div>
-          <span className="shrink-0 text-base text-muted">{project.period}</span>
+          <span className="mr-4 shrink-0 text-base text-muted">{project.period}</span>
         </div>
 
         <div className="mt-4 flex gap-2">

@@ -18,7 +18,7 @@ export default function Sidebar() {
           ))}
         </nav>
 
-        <div className="mt-14">
+        <div className="mt-8">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={site.avatar}

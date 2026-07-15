@@ -2,6 +2,7 @@ import { Fragment } from "react";
 
 /**
  * Renders a string with inline `**bold**` and `[label](url)` markup.
+ * The UCLA Law School link gets a dedicated gentle hover animation.
  */
 export default function RichText({ text }: { text: string }) {
   const parts = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g).filter(Boolean);
@@ -20,13 +21,19 @@ export default function RichText({ text }: { text: string }) {
         if (link) {
           const [, label, href] = link;
           const external = href.startsWith("http");
+          const isHoverAccent = label === "UCLA Law School";
+
           return (
             <a
               key={i}
               href={href}
               target={external ? "_blank" : undefined}
               rel={external ? "noreferrer noopener" : undefined}
-              className="font-medium underline-offset-4 hover:underline"
+              className={
+                isHoverAccent
+                  ? "hover-accent-link font-semibold"
+                  : "font-medium underline-offset-4 hover:underline"
+              }
             >
               {label}
             </a>

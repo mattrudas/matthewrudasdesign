@@ -42,6 +42,8 @@ export type HoverCard = {
   badge: string;
   /** How the top image should be cropped. */
   imageFit?: "cover" | "contain";
+  /** Optional live website embed shown instead of (or over) the static image. */
+  embedUrl?: string;
 };
 
 /** Hover preview cards for key terms in the intro. */
@@ -59,6 +61,7 @@ export const hoverCards: Record<string, HoverCard> = {
       "Where I started my design career, building 0 to 1 at early stage startups.",
     badge: "/hover/upperstudy-seal.png",
     imageFit: "cover",
+    embedUrl: "https://upperstudy.com/",
   },
   Checkmate: {
     image: "/hover/checkmate-photo.svg",

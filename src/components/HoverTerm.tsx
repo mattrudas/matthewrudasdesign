@@ -15,9 +15,11 @@ type HoverTermProps = {
  */
 export default function HoverTerm({ label, href, card }: HoverTermProps) {
   const [open, setOpen] = useState(false);
+  const [embedReady, setEmbedReady] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const cardId = useId();
   const external = href.startsWith("http");
+  const hasEmbed = Boolean(card.embedUrl);
 
   const clearClose = () => {
     if (closeTimer.current) {
@@ -65,7 +67,10 @@ export default function HoverTerm({ label, href, card }: HoverTermProps) {
         onMouseEnter={show}
         onMouseLeave={hide}
       >
-        <span className="hover-preview__media">
+        <span
+          className={`hover-preview__media${hasEmbed ? " hover-preview__media--embed" : ""}`}
+        >
+          {/* Static cover stays as fallback while the live embed loads. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={card.image}
@@ -75,16 +80,29 @@ export default function HoverTerm({ label, href, card }: HoverTermProps) {
                 ? "h-full w-full object-contain"
                 : "h-full w-full object-cover object-[center_35%]"
             }
+            style={
+              hasEmbed && embedReady
+                ? { opacity: 0, position: "absolute", inset: 0 }
+                : undefined
+            }
           />
+          {hasEmbed && open ? (
+            <iframe
+              src={card.embedUrl}
+              title={`${label} website preview`}
+              loading="lazy"
+              tabIndex={-1}
+              sandbox="allow-scripts allow-same-origin"
+              referrerPolicy="no-referrer"
+              className="hover-preview__iframe"
+              onLoad={() => setEmbedReady(true)}
+            />
+          ) : null}
         </span>
         <span className="hover-preview__footer">
           <span className="hover-preview__caption">{card.caption}</span>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={card.badge}
-            alt=""
-            className="hover-preview__badge"
-          />
+          <img src={card.badge} alt="" className="hover-preview__badge" />
         </span>
       </span>
     </span>

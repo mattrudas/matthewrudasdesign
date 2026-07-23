@@ -17,7 +17,7 @@ type LightboxProps = {
   initialIndex?: number;
 };
 
-const EXIT_MS = 900;
+const EXIT_MS = 500;
 
 /**
  * Full-screen image viewer with a frosted glass overlay.

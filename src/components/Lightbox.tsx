@@ -17,7 +17,7 @@ type LightboxProps = {
   initialIndex?: number;
 };
 
-const EXIT_MS = 280;
+const EXIT_MS = 450;
 
 /**
  * Full-screen image viewer with a subtle dim overlay.

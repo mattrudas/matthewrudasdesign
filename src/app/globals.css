@@ -115,12 +115,13 @@ body {
 
 /* ------------------------------------------------------------------ *
  * Lightbox — full-size project screenshot viewer
- * Dark glass panel over a frosted black backdrop (matches mockup).
- * Blur stays constant; only opacity dissolves (avoids open flash).
+ * Open: opacity dissolve with steady frost. Close: drop blur first
+ * then a short fade so exit stays snappy.
  * ------------------------------------------------------------------ */
 .lightbox {
   --lightbox-ease: cubic-bezier(0.4, 0, 0.2, 1);
-  --lightbox-duration: 0.5s;
+  --lightbox-duration: 0.45s;
+  --lightbox-exit-duration: 0.2s;
   position: fixed;
   inset: 0;
   z-index: 50;
@@ -139,10 +140,9 @@ body {
   cursor: zoom-out;
   background: rgb(0 0 0 / 55%);
   opacity: 0;
-  -webkit-backdrop-filter: blur(28px) saturate(1.05);
-  backdrop-filter: blur(28px) saturate(1.05);
+  -webkit-backdrop-filter: blur(20px) saturate(1.05);
+  backdrop-filter: blur(20px) saturate(1.05);
   transition: opacity var(--lightbox-duration) var(--lightbox-ease);
-  will-change: opacity;
 }
 
 .lightbox.is-visible .lightbox-backdrop {
@@ -165,12 +165,9 @@ body {
   color: #ffffff;
   cursor: pointer;
   opacity: 0;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
   transition:
     opacity var(--lightbox-duration) var(--lightbox-ease),
-    background 0.3s ease;
-  will-change: opacity;
+    background 0.25s ease;
 }
 
 .lightbox.is-visible .lightbox-close {
@@ -190,7 +187,6 @@ body {
   pointer-events: none;
   opacity: 0;
   transition: opacity var(--lightbox-duration) var(--lightbox-ease);
-  will-change: opacity;
 }
 
 .lightbox.is-visible .lightbox-stage {
@@ -208,6 +204,18 @@ body {
   border-radius: 12px;
   box-shadow: none;
   outline: none;
+}
+
+/* Close path: kill expensive blur immediately, fade out quickly */
+.lightbox.is-closing .lightbox-backdrop {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  transition-duration: var(--lightbox-exit-duration);
+}
+
+.lightbox.is-closing .lightbox-close,
+.lightbox.is-closing .lightbox-stage {
+  transition-duration: var(--lightbox-exit-duration);
 }
 
 @media (prefers-reduced-motion: reduce) {

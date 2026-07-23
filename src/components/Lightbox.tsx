@@ -17,7 +17,7 @@ type LightboxProps = {
   initialIndex?: number;
 };
 
-const EXIT_MS = 500;
+const EXIT_MS = 200;
 
 /**
  * Full-screen image viewer with a frosted glass overlay.
@@ -34,6 +34,7 @@ export default function Lightbox({
   const [mounted, setMounted] = useState(false);
   const [present, setPresent] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [closing, setClosing] = useState(false);
 
   const slide = slides[index] ?? slides[0];
   const slideSrc = slide?.src;
@@ -47,6 +48,7 @@ export default function Lightbox({
     if (!open) return;
 
     setIndex(initialIndex);
+    setClosing(false);
     setVisible(false);
     setPresent(true);
 
@@ -59,13 +61,12 @@ export default function Lightbox({
 
   // After paint (+ image decode), fade in so the browser never skips the dissolve.
   useEffect(() => {
-    if (!present || !open || visible || !slideSrc) return;
+    if (!present || !open || visible || closing || !slideSrc) return;
 
     let cancelled = false;
 
     const startFade = () => {
       if (cancelled) return;
-      // Double rAF: commit opacity:0, then flip to visible on the next frame.
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           if (!cancelled) setVisible(true);
@@ -94,35 +95,40 @@ export default function Lightbox({
     return () => {
       cancelled = true;
     };
-  }, [present, open, visible, slideSrc]);
+  }, [present, open, visible, closing, slideSrc]);
 
   const requestClose = () => {
+    // Drop blur immediately via is-closing, then quick opacity fade.
+    setClosing(true);
     setVisible(false);
     window.setTimeout(() => {
       setPresent(false);
+      setClosing(false);
       onClose();
     }, EXIT_MS);
   };
 
   useEffect(() => {
-    if (!present) return;
+    if (!present || closing) return;
     const onKey = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
+      setClosing(true);
       setVisible(false);
       window.setTimeout(() => {
         setPresent(false);
+        setClosing(false);
         onClose();
       }, EXIT_MS);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [present, onClose]);
+  }, [present, closing, onClose]);
 
   if (!mounted || !present || !slide) return null;
 
   return createPortal(
     <div
-      className={`lightbox ${visible ? "is-visible" : ""}`}
+      className={`lightbox${visible ? " is-visible" : ""}${closing ? " is-closing" : ""}`}
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}

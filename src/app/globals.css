@@ -183,6 +183,7 @@ body {
   max-width: 100%;
   max-height: calc(100vh - 5rem);
   object-fit: contain;
+  border-radius: 32px;
   box-shadow: 0 16px 48px rgb(0 0 0 / 12%);
 }
 

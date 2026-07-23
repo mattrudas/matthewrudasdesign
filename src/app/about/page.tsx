@@ -17,7 +17,7 @@ export default function AboutPage() {
       </div>
 
       <div className="flex min-h-screen justify-center px-4 sm:px-6">
-        <article className="flex min-h-screen w-full max-w-full flex-col bg-white px-6 pt-24 pb-16 sm:w-[800px] sm:px-8 sm:pt-28 sm:pb-20">
+        <article className="flex min-h-screen w-full max-w-full flex-col bg-white px-6 pt-24 pb-16 sm:w-[800px] sm:pt-28 sm:pb-20">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={site.aboutPortrait}
@@ -32,9 +32,9 @@ export default function AboutPage() {
           </h1>
           <p className="mt-1 text-sm text-[#656565]">{about.role}</p>
 
-          <hr className="mt-4 border-0 border-t border-border" />
+          <hr className="mt-6 border-0 border-t border-border" />
 
-          <p className="mt-4 text-sm font-medium text-accent">{about.date}</p>
+          <p className="mt-6 text-sm font-medium text-accent">{about.date}</p>
 
           <div className="mt-4 space-y-3 text-sm leading-relaxed font-light text-foreground">
             {about.paragraphs.map((paragraph, i) => (

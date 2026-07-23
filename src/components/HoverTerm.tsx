@@ -144,11 +144,13 @@ export default function HoverTerm({ label, href, card }: HoverTermProps) {
               onLoad={() => setEmbedReady(true)}
             />
           ) : null}
-        </span>
-        <span className="hover-preview__footer">
-          <span className="hover-preview__caption">{card.caption}</span>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={card.badge} alt="" className="hover-preview__badge" />
+
+          {/* Caption frosts over the photo so underlying image text stays unreadable */}
+          <span className="hover-preview__footer">
+            <span className="hover-preview__caption">{card.caption}</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={card.badge} alt="" className="hover-preview__badge" />
+          </span>
         </span>
       </span>
     </span>

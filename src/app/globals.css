@@ -280,15 +280,12 @@ body {
   left: 50%;
   bottom: calc(100% + 14px);
   z-index: 40;
-  display: flex;
+  display: block;
   width: min(374px, 78vw);
-  flex-direction: column;
   overflow: hidden;
   border-radius: 13px;
-  background: rgba(255, 255, 255, 0.42);
+  background: #ffffff;
   box-shadow: 0 5px 53px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(40px) saturate(1.25);
-  -webkit-backdrop-filter: blur(40px) saturate(1.25);
   pointer-events: none;
   opacity: 0;
   transform: translate(calc(-50% + var(--hover-shift, 0px)), 8px) scale(0.98);
@@ -305,12 +302,20 @@ body {
 }
 
 .hover-preview__media {
+  position: relative;
   display: block;
-  aspect-ratio: 374 / 189;
+  aspect-ratio: 374 / 240;
   width: 100%;
   overflow: hidden;
   background: #111;
   container-type: size;
+}
+
+.hover-preview__media > img:first-child {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .hover-preview__media--embed {
@@ -322,7 +327,7 @@ body {
   top: 0;
   left: 0;
   width: 1280px;
-  height: calc(1280px * 189 / 374);
+  height: calc(1280px * 240 / 374);
   border: 0;
   pointer-events: none;
   transform: scale(calc(100cqw / 1280px));
@@ -331,14 +336,19 @@ body {
 }
 
 .hover-preview__footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-shrink: 0;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.38);
-  backdrop-filter: blur(48px) saturate(1.3);
-  -webkit-backdrop-filter: blur(48px) saturate(1.3);
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.82);
+  border-top: 1px solid rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(60px) saturate(1.35);
+  -webkit-backdrop-filter: blur(60px) saturate(1.35);
 }
 
 .hover-preview__caption {

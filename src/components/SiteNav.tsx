@@ -1,24 +1,22 @@
-"use client";
-
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { nav } from "@/lib/content";
 
-function isActive(pathname: string, href: string) {
-  if (href === "/") return pathname === "/";
-  if (href.startsWith("/#")) return false;
-  return pathname === href || pathname.startsWith(`${href}/`);
-}
-
-export default function SiteNav() {
-  const pathname = usePathname();
-
+/**
+ * Top navigation. Uses plain anchors (not next/link) so About always does a
+ * full navigation to /about — more reliable on SSO-protected preview deploys.
+ */
+export default function SiteNav({ pathname = "" }: { pathname?: string }) {
   return (
     <nav className="flex items-center gap-10 sm:gap-20" aria-label="Primary">
       {nav.map((item) => {
-        const active = isActive(pathname, item.href);
+        const active =
+          item.href === "/"
+            ? pathname === "/"
+            : item.href.startsWith("/") &&
+              !item.href.startsWith("/#") &&
+              (pathname === item.href || pathname.startsWith(`${item.href}/`));
+
         return (
-          <Link
+          <a
             key={item.href}
             href={item.href}
             aria-current={active ? "page" : undefined}
@@ -27,7 +25,7 @@ export default function SiteNav() {
             }`}
           >
             {item.label}
-          </Link>
+          </a>
         );
       })}
     </nav>

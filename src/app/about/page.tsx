@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="min-h-full bg-white px-6 pt-6 pb-20 lg:px-10">
-      <SiteNav />
+      <SiteNav pathname="/about" />
 
       <article className="mx-auto mt-20 max-w-[36rem]">
         {/* eslint-disable-next-line @next/next/no-img-element */}

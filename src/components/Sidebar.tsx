@@ -7,7 +7,7 @@ export default function Sidebar() {
     <aside className="flex flex-col lg:sticky lg:top-0 lg:h-screen lg:max-h-screen lg:pt-6 lg:pb-[72px] lg:pl-16 lg:pr-16">
       {/* Top: nav + avatar */}
       <div>
-        <SiteNav />
+        <SiteNav pathname="/" />
 
         <div className="mt-8">
           {/* eslint-disable-next-line @next/next/no-img-element */}

@@ -1,5 +1,6 @@
 import Sidebar from "@/components/Sidebar";
 import ProjectItem from "@/components/ProjectItem";
+import AboutHashRedirect from "@/components/AboutHashRedirect";
 import { projects, site } from "@/lib/content";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
 
   return (
     <div className="px-6 pt-6 pb-10 lg:px-0 lg:py-0">
+      <AboutHashRedirect />
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-10">
         <Sidebar />
 

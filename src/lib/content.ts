@@ -22,6 +22,7 @@ export const nav = [
 /**
  * The intro block. The heading name is rendered in the accent color.
  * Paragraphs support `**bold**` and `[label](url)` link syntax inline.
+ * Labels matching `hoverCards` keys get a preview card on hover.
  */
 export const intro = {
   headingLead: "Hello! I am ",
@@ -30,10 +31,43 @@ export const intro = {
   headingRest: " a lead designer at Checkmate and a nice guy.",
   paragraphs: [
     "I took a leave of absence at [UCLA Law School](https://law.ucla.edu/) 5 years ago and started an apprenticeship with an agency that helps early stage designers and start ups called [Upperstudy](https://upperstudy.com/).",
-    "I was paired with a team of 3 cofounders to lead design for a company called **Checkmate**. We now have over 2 millions users, reach hundreds of thousands people a day, have a growing team of 30, and are recently profitable.",
+    "I was paired with a team of 3 cofounders to lead design for a company called [Checkmate](https://joincheckmate.com/). We now have over 2 millions users, reach hundreds of thousands people a day, have a growing team of 30, and are recently profitable.",
     "I have been learning quickly, failing often, and building new things every single day. Over the years, Checkmate has grown and myself alongside it. I love the challenge of starting from scratch and seeing products transform.",
   ],
 } as const;
+
+export type HoverCard = {
+  image: string;
+  caption: string;
+  badge: string;
+  /** How the top image should be cropped. */
+  imageFit?: "cover" | "contain";
+};
+
+/** Hover preview cards for key terms in the intro. */
+export const hoverCards: Record<string, HoverCard> = {
+  "UCLA Law School": {
+    image: "/hover/ucla-photo.jpg",
+    caption:
+      "Photo of me on the first day of law school, most likely heading into contracts.",
+    badge: "/hover/ucla-seal.png",
+    imageFit: "cover",
+  },
+  Upperstudy: {
+    image: "/hover/upperstudy-photo.png",
+    caption:
+      "Where I started my design career, building 0 to 1 at early stage startups.",
+    badge: "/hover/upperstudy-seal.png",
+    imageFit: "cover",
+  },
+  Checkmate: {
+    image: "/hover/checkmate-photo.svg",
+    caption:
+      "Going #1 in the app store twice, raising 3 rounds of funding, and building a design team.",
+    badge: "/hover/checkmate-logo.svg",
+    imageFit: "cover",
+  },
+};
 
 export type Project = {
   slug: string;

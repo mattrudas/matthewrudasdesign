@@ -114,7 +114,7 @@ body {
 }
 
 /* ------------------------------------------------------------------ *
- * UCLA Law School — gentle hover (accent color + underline draw-in)
+ * Hover terms — accent underline + floating preview card
  * ------------------------------------------------------------------ */
 .hover-accent-link {
   position: relative;
@@ -136,22 +136,94 @@ body {
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.hover-term:hover .hover-accent-link,
+.hover-term:focus-within .hover-accent-link,
 .hover-accent-link:hover,
 .hover-accent-link:focus-visible {
   color: var(--accent);
 }
 
+.hover-term:hover .hover-accent-link::after,
+.hover-term:focus-within .hover-accent-link::after,
 .hover-accent-link:hover::after,
 .hover-accent-link:focus-visible::after {
   transform: scaleX(1);
 }
 
+.hover-preview {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 14px);
+  z-index: 40;
+  display: flex;
+  width: min(374px, 78vw);
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 5px 53px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 8px) scale(0.98);
+  transform-origin: bottom center;
+  transition:
+    opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-preview.is-open {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.hover-preview__media {
+  display: block;
+  aspect-ratio: 374 / 189;
+  width: 100%;
+  overflow: hidden;
+  background: #111;
+}
+
+.hover-preview__footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+}
+
+.hover-preview__caption {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 16px;
+  color: #000;
+}
+
+.hover-preview__badge {
+  display: block;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hover-accent-link,
-  .hover-accent-link::after {
+  .hover-accent-link::after,
+  .hover-preview {
     transition: none;
   }
 
+  .hover-preview {
+    transform: translate(-50%, 0) scale(1);
+  }
+
+  .hover-term:hover .hover-accent-link::after,
+  .hover-term:focus-within .hover-accent-link::after,
   .hover-accent-link:hover::after,
   .hover-accent-link:focus-visible::after {
     transform: scaleX(1);

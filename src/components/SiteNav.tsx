@@ -9,14 +9,12 @@ export default function SiteNav({ pathname = "" }: { pathname?: string }) {
     <nav className="flex items-center gap-10 sm:gap-20" aria-label="Primary">
       {nav.map((item) => {
         const external = item.href.startsWith("http");
+        const isInternalPage =
+          item.href.startsWith("/") && !item.href.startsWith("/#");
         const active =
           !external &&
-          (item.href === "/"
-            ? pathname === "/"
-            : item.href.startsWith("/") &&
-              !item.href.startsWith("/#") &&
-              (pathname === item.href ||
-                pathname.startsWith(`${item.href}/`)));
+          isInternalPage &&
+          (pathname === item.href || pathname.startsWith(`${item.href}/`));
 
         return (
           <a

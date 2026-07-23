@@ -40,7 +40,7 @@ export default function Sidebar() {
 
         <div className="mt-10 flex w-full gap-4">
           <span aria-hidden="true" className="w-px shrink-0 self-stretch bg-border" />
-          <div className="space-y-3 text-muted-strong">
+          <div className="hover-anchor-column space-y-3 text-muted-strong">
             {intro.paragraphs.map((paragraph, i) => (
               <p key={i}>
                 <RichText text={paragraph} />

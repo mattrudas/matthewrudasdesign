@@ -9,14 +9,26 @@ type HoverTermProps = {
   card: HoverCard;
 };
 
+type FillBox = {
+  top: number;
+  left: number;
+  width: number;
+  height: number;
+};
+
 /**
  * Inline term with the accent underline animation plus a floating preview
  * card that gently fades/slides in on hover (or keyboard focus).
+ *
+ * Cards with `embedUrl` (Upperstudy) fill the available space above the
+ * term — live site preview on top, caption footer just above the text.
  */
 export default function HoverTerm({ label, href, card }: HoverTermProps) {
   const [open, setOpen] = useState(false);
   const [embedReady, setEmbedReady] = useState(false);
+  const [fillBox, setFillBox] = useState<FillBox | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const termRef = useRef<HTMLSpanElement | null>(null);
   const cardId = useId();
   const external = href.startsWith("http");
   const hasEmbed = Boolean(card.embedUrl);
@@ -28,8 +40,30 @@ export default function HoverTerm({ label, href, card }: HoverTermProps) {
     }
   };
 
+  const measureFill = () => {
+    const term = termRef.current;
+    if (!term || !hasEmbed) return;
+
+    const termRect = term.getBoundingClientRect();
+    const column = term.closest(".hover-anchor-column") as HTMLElement | null;
+    const colRect = column?.getBoundingClientRect() ?? termRect;
+
+    // Fill from near the top of the viewport down to just above the term.
+    const top = 24;
+    const bottom = termRect.top - 12;
+    const height = Math.max(260, bottom - top);
+
+    setFillBox({
+      top,
+      left: colRect.left,
+      width: colRect.width,
+      height,
+    });
+  };
+
   const show = () => {
     clearClose();
+    if (hasEmbed) measureFill();
     setOpen(true);
   };
 
@@ -41,8 +75,23 @@ export default function HoverTerm({ label, href, card }: HoverTermProps) {
 
   useEffect(() => () => clearClose(), []);
 
+  useEffect(() => {
+    if (!open || !hasEmbed) return;
+
+    measureFill();
+    const onResize = () => measureFill();
+    window.addEventListener("resize", onResize);
+    window.addEventListener("scroll", onResize, true);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("scroll", onResize, true);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, hasEmbed]);
+
   return (
     <span
+      ref={termRef}
       className="hover-term relative inline"
       onMouseEnter={show}
       onMouseLeave={hide}
@@ -63,12 +112,26 @@ export default function HoverTerm({ label, href, card }: HoverTermProps) {
         id={cardId}
         role="tooltip"
         aria-hidden={!open}
-        className={`hover-preview ${open ? "is-open" : ""}`}
+        className={`hover-preview ${open ? "is-open" : ""} ${
+          hasEmbed ? "hover-preview--fill" : ""
+        }`}
+        style={
+          hasEmbed && fillBox
+            ? {
+                top: fillBox.top,
+                left: fillBox.left,
+                width: fillBox.width,
+                height: fillBox.height,
+              }
+            : undefined
+        }
         onMouseEnter={show}
         onMouseLeave={hide}
       >
         <span
-          className={`hover-preview__media${hasEmbed ? " hover-preview__media--embed" : ""}`}
+          className={`hover-preview__media${
+            hasEmbed ? " hover-preview__media--embed" : ""
+          }`}
         >
           {/* Static cover stays as fallback while the live embed loads. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}

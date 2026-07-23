@@ -19,13 +19,13 @@ export default function Home() {
       <AboutHashRedirect />
 
       <div className="grid gap-12 px-6 lg:grid-cols-2 lg:gap-10 lg:px-0">
-        {/* Nav in the left column so the work feed can start flush at the top */}
-        <div className="lg:pl-6">
+        {/* Entire left column stays put while the work feed scrolls */}
+        <div className="flex flex-col lg:sticky lg:top-0 lg:h-screen lg:pl-6 lg:pb-6">
           <SiteHeader pathname="/" />
           <Sidebar />
         </div>
 
-        <main id="resume" className="min-w-0 lg:pb-[72px]">
+        <main id="resume" className="min-w-0 lg:pb-6">
           <div className="space-y-8">
             {projects.map((project) => (
               <ProjectItem key={project.slug} project={project} />

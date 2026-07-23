@@ -3,8 +3,7 @@ import RichText from "./RichText";
 
 export default function Sidebar() {
   return (
-    <aside className="flex flex-col lg:sticky lg:top-0 lg:h-[calc(100vh-5.5rem)] lg:max-h-[calc(100vh-5.5rem)] lg:pb-[72px] lg:pr-16">
-      {/* Bottom: intro + CTA */}
+    <aside className="flex min-h-0 flex-1 flex-col lg:pr-16">
       <div className="mt-12 w-full lg:mt-auto">
         <h1 className="text-[28px] leading-snug font-normal text-balance sm:text-[32px]">
           {intro.headingLead}
@@ -31,7 +30,7 @@ export default function Sidebar() {
           href={`mailto:${site.email}`}
           className="mt-9 inline-flex items-center gap-2 rounded-full bg-button px-6 py-2 text-button-contrast transition-transform hover:-translate-y-0.5"
         >
-          Talk to me
+          Get in touch
           <svg
             width="16"
             height="16"

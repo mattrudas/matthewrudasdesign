@@ -23,8 +23,8 @@ export default function AboutPage() {
             src={site.aboutPortrait}
             alt={site.name}
             width={80}
-            height={96}
-            className="h-24 w-20 object-cover"
+            height={80}
+            className="h-20 w-20 object-cover"
           />
 
           <h1 className="mt-6 text-sm font-medium tracking-tight text-foreground">

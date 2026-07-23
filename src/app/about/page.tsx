@@ -16,15 +16,15 @@ export default function AboutPage() {
         <SiteHeader pathname="/about" />
       </div>
 
-      <div className="flex min-h-screen justify-center px-4 sm:px-6">
-        <article className="flex min-h-screen w-full max-w-full flex-col bg-white px-6 pt-6 pb-16 sm:w-[800px] sm:pb-20">
+      <div className="flex min-h-screen justify-center px-4 py-24 sm:px-6 sm:py-28">
+        <article className="w-full max-w-[720px] rounded-[12px] bg-white px-6 py-8 sm:px-10 sm:py-10 md:max-w-[800px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={site.aboutPortrait}
             alt={site.name}
             width={80}
-            height={80}
-            className="h-20 w-20 object-cover"
+            height={96}
+            className="h-24 w-20 object-cover"
           />
 
           <h1 className="mt-6 text-sm font-medium tracking-tight text-foreground">

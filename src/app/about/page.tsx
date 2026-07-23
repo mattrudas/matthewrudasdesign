@@ -27,7 +27,7 @@ export default function AboutPage() {
           {about.paragraphs.map((paragraph, i) => (
             <p
               key={i}
-              className={paragraph.lined ? "about-lined" : undefined}
+              className={"lined" in paragraph && paragraph.lined ? "about-lined" : undefined}
             >
               <RichText text={paragraph.text} />
             </p>

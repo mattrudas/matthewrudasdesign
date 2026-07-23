@@ -157,13 +157,11 @@ export default function Lightbox({
       </button>
 
       <div className="lightbox-stage">
-        <div className="lightbox-panel">
-          <p id={titleId} className="sr-only">
-            {slide.alt}
-          </p>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={slide.src} alt={slide.alt} className="lightbox-image" />
-        </div>
+        <p id={titleId} className="sr-only">
+          {slide.alt}
+        </p>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={slide.src} alt={slide.alt} className="lightbox-image" />
       </div>
     </div>,
     document.body,

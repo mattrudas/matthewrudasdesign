@@ -1,14 +1,9 @@
 import { intro, site } from "@/lib/content";
 import RichText from "./RichText";
-import SiteNav from "./SiteNav";
 
 export default function Sidebar() {
   return (
-    <aside className="flex flex-col lg:sticky lg:top-0 lg:h-screen lg:max-h-screen lg:pt-6 lg:pb-[72px] lg:pl-16 lg:pr-16">
-      <div>
-        <SiteNav pathname="/" />
-      </div>
-
+    <aside className="flex flex-col lg:sticky lg:top-0 lg:h-[calc(100vh-5.5rem)] lg:max-h-[calc(100vh-5.5rem)] lg:pb-[72px] lg:pl-16 lg:pr-16">
       {/* Bottom: intro + CTA */}
       <div className="mt-12 w-full lg:mt-auto">
         <h1 className="text-[28px] leading-snug font-normal text-balance sm:text-[32px]">
@@ -18,7 +13,10 @@ export default function Sidebar() {
         </h1>
 
         <div className="mt-10 flex w-full gap-4">
-          <span aria-hidden="true" className="w-px shrink-0 self-stretch bg-border" />
+          <span
+            aria-hidden="true"
+            className="w-px shrink-0 self-stretch bg-border"
+          />
           <div className="space-y-3 text-muted-strong">
             {intro.paragraphs.map((paragraph, i) => (
               <p key={i}>

@@ -10,8 +10,10 @@ export const site = {
   email: "hello@matthewrudas.design",
   resumeUrl:
     "https://drive.google.com/file/d/1gxDJHkMbp282CLSQnCH3MgXS76dxBG3m/view?usp=sharing",
-  /** Avatar image placed in /public. */
+  /** Avatar GIF used in the top nav (home link). */
   avatar: "/avatar.gif",
+  /** Portrait on the About letter card. */
+  aboutPortrait: "/about-portrait.png",
 } as const;
 
 export const nav = [

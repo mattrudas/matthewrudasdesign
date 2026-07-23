@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import SiteNav from "@/components/SiteNav";
+import SiteHeader from "@/components/SiteHeader";
 import RichText from "@/components/RichText";
 import { about, site } from "@/lib/content";
 
@@ -10,32 +10,50 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-full bg-white px-6 pt-6 pb-20 lg:px-10">
-      <SiteNav pathname="/about" />
+    <div className="relative min-h-full bg-background">
+      {/* Same inset as home SiteHeader so the nav does not shift inward */}
+      <div className="absolute inset-x-0 top-0 z-10">
+        <SiteHeader pathname="/about" />
+      </div>
 
-      <article className="mx-auto mt-20 max-w-[36rem]">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          {site.name}
-        </h1>
-        <p className="mt-1 text-base text-muted-strong">{about.role}</p>
+      <div className="flex min-h-full justify-center">
+        <article className="w-full max-w-[600px] bg-white px-6 pt-24 pb-16 sm:px-8 sm:pt-28 sm:pb-20">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={site.aboutPortrait}
+            alt={site.name}
+            width={80}
+            height={80}
+            className="h-20 w-20 rounded-[4px] object-cover"
+          />
 
-        <hr className="mt-8 border-0 border-t border-border" />
+          <h1 className="mt-6 text-sm font-medium tracking-tight text-foreground">
+            {site.name}
+          </h1>
+          <p className="mt-1 text-sm text-[#656565]">{about.role}</p>
 
-        <p className="mt-8 text-sm text-accent">{about.date}</p>
+          <hr className="mt-4 border-0 border-t border-border" />
 
-        <div className="mt-6 space-y-5 text-[15px] leading-7 text-foreground">
-          {about.paragraphs.map((paragraph, i) => (
-            <p
-              key={i}
-              className={"lined" in paragraph && paragraph.lined ? "about-lined" : undefined}
-            >
-              <RichText text={paragraph.text} />
-            </p>
-          ))}
-        </div>
+          <p className="mt-4 text-sm font-medium text-accent">{about.date}</p>
 
-        <p className="mt-10 text-[15px] text-muted-strong">{about.signOff}</p>
-      </article>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed font-light text-foreground">
+            {about.paragraphs.map((paragraph, i) => (
+              <p
+                key={i}
+                className={
+                  "lined" in paragraph && paragraph.lined
+                    ? "about-lined"
+                    : undefined
+                }
+              >
+                <RichText text={paragraph.text} />
+              </p>
+            ))}
+          </div>
+
+          <p className="mt-3 text-sm text-[#656565]">{about.signOff}</p>
+        </article>
+      </div>
     </div>
   );
 }

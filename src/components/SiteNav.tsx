@@ -9,7 +9,7 @@ export default function SiteNav({ pathname = "" }: { pathname?: string }) {
   const homeActive = pathname === "/";
 
   return (
-    <nav className="flex items-center gap-10 sm:gap-20" aria-label="Primary">
+    <nav className="flex items-center gap-12" aria-label="Primary">
       <a
         href="/"
         aria-label="Home"

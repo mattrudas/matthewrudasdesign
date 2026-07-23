@@ -20,7 +20,6 @@ export const nav = [
     label: "Resume",
     href: "https://drive.google.com/file/d/1gxDJHkMbp282CLSQnCH3MgXS76dxBG3m/view?usp=sharing",
   },
-  { label: "Contact", href: "/#contact" },
 ] as const;
 
 /**

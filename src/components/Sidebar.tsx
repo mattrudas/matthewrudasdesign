@@ -5,20 +5,8 @@ import SiteNav from "./SiteNav";
 export default function Sidebar() {
   return (
     <aside className="flex flex-col lg:sticky lg:top-0 lg:h-screen lg:max-h-screen lg:pt-6 lg:pb-[72px] lg:pl-16 lg:pr-16">
-      {/* Top: nav + avatar */}
       <div>
         <SiteNav pathname="/" />
-
-        <div className="mt-8">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={site.avatar}
-            alt={site.name}
-            width={120}
-            height={120}
-            className="h-[120px] w-[120px] rounded-full object-cover"
-          />
-        </div>
       </div>
 
       {/* Bottom: intro + CTA */}

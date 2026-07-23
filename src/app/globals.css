@@ -166,7 +166,7 @@ body {
   -webkit-backdrop-filter: blur(24px);
   pointer-events: none;
   opacity: 0;
-  transform: translate(-50%, 8px) scale(0.98);
+  transform: translate(calc(-50% + var(--hover-shift, 0px)), 8px) scale(0.98);
   transform-origin: bottom center;
   transition:
     opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -176,7 +176,7 @@ body {
 .hover-preview.is-open {
   pointer-events: auto;
   opacity: 1;
-  transform: translate(-50%, 0) scale(1);
+  transform: translate(calc(-50% + var(--hover-shift, 0px)), 0) scale(1);
 }
 
 .hover-preview__media {
@@ -238,7 +238,7 @@ body {
   }
 
   .hover-preview {
-    transform: translate(-50%, 0) scale(1);
+    transform: translate(calc(-50% + var(--hover-shift, 0px)), 0) scale(1);
   }
 
   .hover-term:hover .hover-accent-link::after,

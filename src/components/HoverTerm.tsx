@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type CSSProperties } from "react";
 import type { HoverCard } from "@/lib/content";
 
 type HoverTermProps = {
@@ -9,14 +9,20 @@ type HoverTermProps = {
   card: HoverCard;
 };
 
+const VIEWPORT_PAD = 16;
+
 /**
  * Inline term with the accent underline animation plus a floating preview
  * modal that gently fades/slides in on hover (or keyboard focus).
+ * Horizontal position is clamped so the card never clips the viewport edge.
  */
 export default function HoverTerm({ label, href, card }: HoverTermProps) {
   const [open, setOpen] = useState(false);
   const [embedReady, setEmbedReady] = useState(false);
+  const [shiftX, setShiftX] = useState(0);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const termRef = useRef<HTMLSpanElement | null>(null);
+  const previewRef = useRef<HTMLSpanElement | null>(null);
   const cardId = useId();
   const external = href.startsWith("http");
   const hasEmbed = Boolean(card.embedUrl);
@@ -26,6 +32,25 @@ export default function HoverTerm({ label, href, card }: HoverTermProps) {
       clearTimeout(closeTimer.current);
       closeTimer.current = null;
     }
+  };
+
+  const clampPosition = () => {
+    const term = termRef.current;
+    const preview = previewRef.current;
+    if (!term || !preview) return;
+
+    const termRect = term.getBoundingClientRect();
+    const previewWidth = Math.min(
+      preview.offsetWidth || 374,
+      window.innerWidth * 0.78,
+    );
+    const centerX = termRect.left + termRect.width / 2;
+    const idealLeft = centerX - previewWidth / 2;
+    const minLeft = VIEWPORT_PAD;
+    const maxLeft = window.innerWidth - VIEWPORT_PAD - previewWidth;
+    const clampedLeft = Math.min(Math.max(idealLeft, minLeft), maxLeft);
+
+    setShiftX(clampedLeft - idealLeft);
   };
 
   const show = () => {
@@ -41,8 +66,24 @@ export default function HoverTerm({ label, href, card }: HoverTermProps) {
 
   useEffect(() => () => clearClose(), []);
 
+  useEffect(() => {
+    if (!open) return;
+
+    // Measure after paint so offsetWidth is accurate.
+    const id = requestAnimationFrame(() => clampPosition());
+    const onReposition = () => clampPosition();
+    window.addEventListener("resize", onReposition);
+    window.addEventListener("scroll", onReposition, true);
+    return () => {
+      cancelAnimationFrame(id);
+      window.removeEventListener("resize", onReposition);
+      window.removeEventListener("scroll", onReposition, true);
+    };
+  }, [open]);
+
   return (
     <span
+      ref={termRef}
       className="hover-term relative inline"
       onMouseEnter={show}
       onMouseLeave={hide}
@@ -60,10 +101,12 @@ export default function HoverTerm({ label, href, card }: HoverTermProps) {
       </a>
 
       <span
+        ref={previewRef}
         id={cardId}
         role="tooltip"
         aria-hidden={!open}
         className={`hover-preview ${open ? "is-open" : ""}`}
+        style={{ "--hover-shift": `${shiftX}px` } as CSSProperties}
         onMouseEnter={show}
         onMouseLeave={hide}
       >

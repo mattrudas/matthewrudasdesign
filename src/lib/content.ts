@@ -14,10 +14,26 @@ export const site = {
 } as const;
 
 export const nav = [
-  { label: "About", href: "#about" },
-  { label: "Resume", href: "#resume" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/about" },
+  { label: "Resume", href: "/" },
+  { label: "Contact", href: "/#contact" },
 ] as const;
+
+/**
+ * About page letter. Paragraphs support `**bold**` and `[label](url)`.
+ */
+export const about = {
+  role: "Designer",
+  date: "July 13 2026",
+  signOff: "Matthew",
+  paragraphs: [
+    "Hello,",
+    "Thanks for stopping by. I took a leave of absence from **UCLA Law School** and found my way into product design — first through Google’s UX Design Course, then by apprenticing with early-stage startups at [Upperstudy](https://upperstudy.com/).",
+    "I’ve spent the years since building from scratch: pairing with founders, shipping products, and growing alongside the teams I design for. I care about work that starts simple and becomes something people rely on.",
+    "Outside of design I spend time with music and guitar, my cats, sports, and being outside in nature.",
+    "Glad you’re here.",
+  ],
+} as const;
 
 /**
  * The intro block. The heading name is rendered in the accent color.

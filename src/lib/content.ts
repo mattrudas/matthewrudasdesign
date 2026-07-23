@@ -8,14 +8,18 @@ export const site = {
   role: "Lead Designer",
   company: "Checkmate",
   email: "hello@matthewrudas.design",
-  resumeUrl: "#",
+  resumeUrl:
+    "https://drive.google.com/file/d/1gxDJHkMbp282CLSQnCH3MgXS76dxBG3m/view?usp=sharing",
   /** Avatar image placed in /public. */
   avatar: "/avatar.gif",
 } as const;
 
 export const nav = [
   { label: "About", href: "/about" },
-  { label: "Resume", href: "/" },
+  {
+    label: "Resume",
+    href: "https://drive.google.com/file/d/1gxDJHkMbp282CLSQnCH3MgXS76dxBG3m/view?usp=sharing",
+  },
   { label: "Contact", href: "/#contact" },
 ] as const;
 

@@ -10,14 +10,14 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="relative min-h-full bg-background">
+    <div className="relative min-h-screen bg-background">
       {/* Same inset as home SiteHeader so the nav does not shift inward */}
       <div className="absolute inset-x-0 top-0 z-10">
         <SiteHeader pathname="/about" />
       </div>
 
-      <div className="flex min-h-full justify-center px-4 sm:px-6">
-        <article className="flex min-h-full w-full max-w-full flex-col bg-white px-6 pt-24 pb-16 sm:w-[800px] sm:px-8 sm:pt-28 sm:pb-20">
+      <div className="flex min-h-screen justify-center px-4 sm:px-6">
+        <article className="flex min-h-screen w-full max-w-full flex-col bg-white px-6 pt-24 pb-16 sm:w-[800px] sm:px-8 sm:pt-28 sm:pb-20">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={site.aboutPortrait}

@@ -17,10 +17,10 @@ type LightboxProps = {
   initialIndex?: number;
 };
 
-const EXIT_MS = 850;
+const EXIT_MS = 900;
 
 /**
- * Full-screen image viewer with a subtle dim overlay.
+ * Full-screen image viewer with a frosted glass overlay.
  * Structured around a slides array so next/prev can be added later.
  */
 export default function Lightbox({
@@ -36,26 +36,65 @@ export default function Lightbox({
   const [visible, setVisible] = useState(false);
 
   const slide = slides[index] ?? slides[0];
+  const slideSrc = slide?.src;
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Mount the portal when opened; keep it at opacity 0 until the enter effect runs.
   useEffect(() => {
     if (!open) return;
 
     setIndex(initialIndex);
+    setVisible(false);
     setPresent(true);
+
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-
-    const enter = requestAnimationFrame(() => setVisible(true));
-
     return () => {
-      cancelAnimationFrame(enter);
       document.body.style.overflow = prevOverflow;
     };
   }, [open, initialIndex]);
+
+  // After paint (+ image decode), fade in so the browser never skips the dissolve.
+  useEffect(() => {
+    if (!present || !open || visible || !slideSrc) return;
+
+    let cancelled = false;
+
+    const startFade = () => {
+      if (cancelled) return;
+      // Double rAF: commit opacity:0, then flip to visible on the next frame.
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (!cancelled) setVisible(true);
+        });
+      });
+    };
+
+    const img = new Image();
+    img.src = slideSrc;
+
+    const ready = () => {
+      if (typeof img.decode === "function") {
+        img.decode().then(startFade).catch(startFade);
+      } else {
+        startFade();
+      }
+    };
+
+    if (img.complete) {
+      ready();
+    } else {
+      img.addEventListener("load", ready, { once: true });
+      img.addEventListener("error", startFade, { once: true });
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [present, open, visible, slideSrc]);
 
   const requestClose = () => {
     setVisible(false);
@@ -74,9 +113,6 @@ export default function Lightbox({
         setPresent(false);
         onClose();
       }, EXIT_MS);
-      // Slideshow hooks for later:
-      // if (event.key === "ArrowRight") setIndex((i) => Math.min(i + 1, slides.length - 1));
-      // if (event.key === "ArrowLeft") setIndex((i) => Math.max(i - 1, 0));
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);

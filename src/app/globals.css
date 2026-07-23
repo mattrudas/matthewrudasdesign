@@ -92,19 +92,6 @@ body {
   text-wrap: balance;
 }
 
-/* About letter — notebook-ruled paragraph (matches Figma lined block) */
-.about-lined {
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent calc(1.75rem - 1px),
-    #a8c4e8 calc(1.75rem - 1px),
-    #a8c4e8 1.75rem
-  );
-  background-position: 0 0.1em;
-  line-height: 1.75rem;
-}
-
 .reveal {
   opacity: 0;
   transform: translateY(1rem);

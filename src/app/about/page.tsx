@@ -46,7 +46,7 @@ export default function AboutPage() {
                     : undefined
                 }
               >
-                <RichText text={paragraph.text} />
+                <RichText text={paragraph} />
               </p>
             ))}
           </div>

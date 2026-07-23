@@ -12,7 +12,7 @@ export default function AboutPage() {
   return (
     <div className="relative min-h-screen bg-background">
       {/* Same inset as home SiteHeader so the nav does not shift inward */}
-      <div className="absolute inset-x-0 top-0 z-10">
+      <div className="absolute inset-x-0 top-0 z-10 px-6">
         <SiteHeader pathname="/about" />
       </div>
 

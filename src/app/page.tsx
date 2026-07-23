@@ -17,10 +17,13 @@ export default function Home() {
   return (
     <div className="pb-10 lg:pb-0">
       <AboutHashRedirect />
-      <SiteHeader pathname="/" />
 
       <div className="grid gap-12 px-6 lg:grid-cols-2 lg:gap-10 lg:px-0">
-        <Sidebar />
+        {/* Nav in the left column so the work feed can start flush at the top */}
+        <div className="lg:pl-6">
+          <SiteHeader pathname="/" />
+          <Sidebar />
+        </div>
 
         <main id="resume" className="min-w-0 lg:pb-[72px]">
           <div className="space-y-8">

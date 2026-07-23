@@ -1,12 +1,12 @@
 import SiteNav from "./SiteNav";
 
 /**
- * Shared top nav shell so Home and About keep the same left/top inset.
- * 24px left/right padding on all breakpoints.
+ * Shared top nav shell. Horizontal inset is owned by the parent
+ * so Home (left column) and About (absolute bar) stay aligned at 24px.
  */
 export default function SiteHeader({ pathname = "" }: { pathname?: string }) {
   return (
-    <header className="px-6 pt-6">
+    <header className="pt-6">
       <SiteNav pathname={pathname} />
     </header>
   );

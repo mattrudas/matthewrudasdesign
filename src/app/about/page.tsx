@@ -16,8 +16,8 @@ export default function AboutPage() {
         <SiteHeader pathname="/about" />
       </div>
 
-      <div className="flex min-h-screen justify-center px-4 py-24 sm:px-6 sm:py-28">
-        <article className="w-full max-w-[1200px] rounded-[12px] bg-white px-6 py-8 sm:px-10 sm:py-10">
+      <div className="flex min-h-screen items-start justify-center px-4 pt-24 pb-16 sm:px-6 sm:pt-28 sm:pb-20">
+        <article className="w-full max-w-[1200px] rounded-[12px] bg-white p-6">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={site.aboutPortrait}

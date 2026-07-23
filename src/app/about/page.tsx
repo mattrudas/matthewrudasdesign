@@ -14,16 +14,7 @@ export default function AboutPage() {
       <SiteNav pathname="/about" />
 
       <article className="mx-auto mt-20 max-w-[36rem]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={site.avatar}
-          alt={site.name}
-          width={72}
-          height={72}
-          className="h-[72px] w-[72px] rounded-full object-cover"
-        />
-
-        <h1 className="mt-6 text-xl font-semibold tracking-tight text-foreground">
+        <h1 className="text-xl font-semibold tracking-tight text-foreground">
           {site.name}
         </h1>
         <p className="mt-1 text-base text-muted-strong">{about.role}</p>
@@ -34,13 +25,16 @@ export default function AboutPage() {
 
         <div className="mt-6 space-y-5 text-[15px] leading-7 text-foreground">
           {about.paragraphs.map((paragraph, i) => (
-            <p key={i}>
-              <RichText text={paragraph} />
+            <p
+              key={i}
+              className={paragraph.lined ? "about-lined" : undefined}
+            >
+              <RichText text={paragraph.text} />
             </p>
           ))}
         </div>
 
-        <p className="mt-10 text-[15px] text-foreground">{about.signOff}</p>
+        <p className="mt-10 text-[15px] text-muted-strong">{about.signOff}</p>
       </article>
     </div>
   );

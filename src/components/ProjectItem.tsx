@@ -1,17 +1,28 @@
+"use client";
+
+import { useState } from "react";
 import type { Project } from "@/lib/content";
 import Reveal from "./Reveal";
+import Lightbox from "./Lightbox";
 
 export default function ProjectItem({ project }: { project: Project }) {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
   return (
     <Reveal as="article">
-      <div className="aspect-[788/364] w-full overflow-hidden bg-surface">
+      <button
+        type="button"
+        onClick={() => setLightboxOpen(true)}
+        aria-label={`View ${project.title} full size`}
+        className="group relative block aspect-[788/364] w-full cursor-zoom-in overflow-hidden bg-surface text-left"
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={project.image}
           alt={project.title}
-          className="h-full w-full object-cover object-top"
+          className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.015]"
         />
-      </div>
+      </button>
 
       <div className="pt-4">
         <div className="flex items-start justify-between gap-4">
@@ -23,10 +34,21 @@ export default function ProjectItem({ project }: { project: Project }) {
         </div>
 
         <div className="mt-4 flex gap-2">
-          <span aria-hidden="true" className="w-px shrink-0 self-stretch bg-border" />
-          <p className="text-sm font-light text-description">{project.description}</p>
+          <span
+            aria-hidden="true"
+            className="w-px shrink-0 self-stretch bg-border"
+          />
+          <p className="text-sm font-light text-description">
+            {project.description}
+          </p>
         </div>
       </div>
+
+      <Lightbox
+        open={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        slides={[{ src: project.image, alt: project.title }]}
+      />
     </Reveal>
   );
 }

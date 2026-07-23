@@ -3,7 +3,7 @@ import RichText from "./RichText";
 
 export default function Sidebar() {
   return (
-    <aside className="flex flex-col lg:sticky lg:top-0 lg:h-[calc(100vh-5.5rem)] lg:max-h-[calc(100vh-5.5rem)] lg:pb-[72px] lg:pl-16 lg:pr-16">
+    <aside className="flex flex-col lg:sticky lg:top-0 lg:h-[calc(100vh-5.5rem)] lg:max-h-[calc(100vh-5.5rem)] lg:pb-[72px] lg:pl-6 lg:pr-16">
       {/* Bottom: intro + CTA */}
       <div className="mt-12 w-full lg:mt-auto">
         <h1 className="text-[28px] leading-snug font-normal text-balance sm:text-[32px]">

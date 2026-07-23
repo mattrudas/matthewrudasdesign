@@ -17,7 +17,7 @@ export default function AboutPage() {
       </div>
 
       <div className="flex min-h-screen justify-center px-4 sm:px-6">
-        <article className="flex min-h-screen w-full max-w-full flex-col bg-white px-6 pt-24 pb-16 sm:w-[800px] sm:pt-28 sm:pb-20">
+        <article className="flex min-h-screen w-full max-w-full flex-col bg-white px-6 pt-6 pb-16 sm:w-[800px] sm:pb-20">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={site.aboutPortrait}

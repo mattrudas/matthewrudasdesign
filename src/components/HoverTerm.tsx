@@ -123,13 +123,14 @@ export default function HoverTerm({ label, href, card }: HoverTermProps) {
             className={
               card.imageFit === "contain"
                 ? "h-full w-full object-contain"
-                : "h-full w-full object-cover object-[center_35%]"
+                : "h-full w-full object-cover"
             }
-            style={
-              hasEmbed && embedReady
+            style={{
+              objectPosition: card.imagePosition ?? "center center",
+              ...(hasEmbed && embedReady
                 ? { opacity: 0, position: "absolute", inset: 0 }
-                : undefined
-            }
+                : {}),
+            }}
           />
           {hasEmbed && open ? (
             <iframe

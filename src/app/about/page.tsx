@@ -16,15 +16,15 @@ export default function AboutPage() {
         <SiteHeader pathname="/about" />
       </div>
 
-      <div className="flex min-h-full justify-center">
-        <article className="w-full max-w-[600px] bg-white px-6 pt-24 pb-16 sm:px-8 sm:pt-28 sm:pb-20">
+      <div className="flex min-h-full justify-center px-4 sm:px-6">
+        <article className="w-full max-w-full bg-white px-6 pt-24 pb-16 sm:w-[600px] sm:px-8 sm:pt-28 sm:pb-20">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={site.aboutPortrait}
             alt={site.name}
             width={80}
             height={80}
-            className="h-20 w-20 rounded-[4px] object-cover"
+            className="h-20 w-20 object-cover"
           />
 
           <h1 className="mt-6 text-sm font-medium tracking-tight text-foreground">
@@ -38,14 +38,7 @@ export default function AboutPage() {
 
           <div className="mt-4 space-y-3 text-sm leading-relaxed font-light text-foreground">
             {about.paragraphs.map((paragraph, i) => (
-              <p
-                key={i}
-                className={
-                  "lined" in paragraph && paragraph.lined
-                    ? "about-lined"
-                    : undefined
-                }
-              >
+              <p key={i}>
                 <RichText text={paragraph} />
               </p>
             ))}

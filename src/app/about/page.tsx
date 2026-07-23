@@ -17,7 +17,7 @@ export default function AboutPage() {
       </div>
 
       <div className="flex min-h-screen justify-center px-4 py-24 sm:px-6 sm:py-28">
-        <article className="w-full max-w-[720px] rounded-[12px] bg-white px-6 py-8 sm:px-10 sm:py-10 md:max-w-[800px]">
+        <article className="w-full max-w-[1200px] rounded-[12px] bg-white px-6 py-8 sm:px-10 sm:py-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={site.aboutPortrait}

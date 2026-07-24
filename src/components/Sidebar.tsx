@@ -48,7 +48,7 @@ export default function Sidebar() {
         </a>
       </div>
 
-      <nav className="flex items-center gap-3 pb-1" aria-label="Social">
+      <nav className="flex items-center gap-2.5 pb-1" aria-label="Social">
         {socials.map((item) => (
           <a
             key={item.label}
@@ -56,15 +56,15 @@ export default function Sidebar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={item.label}
-            className="inline-flex h-9 w-9 items-center justify-center transition-transform hover:-translate-y-0.5"
+            className="inline-flex h-8 w-8 items-center justify-center transition-transform hover:-translate-y-0.5"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={item.icon}
               alt=""
-              width={36}
-              height={36}
-              className="h-9 w-9"
+              width={32}
+              height={32}
+              className="h-8 w-8"
             />
           </a>
         ))}

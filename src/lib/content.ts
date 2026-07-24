@@ -38,7 +38,7 @@ export const socials = [
   },
   {
     label: "Spotify",
-    href: "https://open.spotify.com/",
+    href: "https://open.spotify.com/artist/2L4Mh7U1DsU88Fmw45cDo7?si=mMO97YLRSKuhw8uTBo-0Cg",
     icon: "/social/spotify.png",
   },
 ] as const;

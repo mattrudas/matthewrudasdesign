@@ -286,8 +286,11 @@ body {
   flex-direction: column;
   overflow: hidden;
   border-radius: 13px;
-  background: transparent;
+  /* Opaque enough that intro copy behind the card is unreadable */
+  background: rgba(255, 255, 255, 0.94);
   box-shadow: 0 5px 53px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(40px) saturate(1.15);
+  -webkit-backdrop-filter: blur(40px) saturate(1.15);
   pointer-events: none;
   opacity: 0;
   transform: translate(calc(-50% + var(--hover-shift, 0px)), 8px) scale(0.98);
@@ -349,9 +352,9 @@ body {
   flex-shrink: 0;
   min-height: 58px;
   padding: 12px;
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(40px) saturate(1.15);
+  -webkit-backdrop-filter: blur(40px) saturate(1.15);
 }
 
 .hover-preview__caption {

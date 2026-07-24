@@ -24,6 +24,25 @@ export const nav = [
   },
 ] as const;
 
+/** Social links shown at the bottom of the home left column. */
+export const socials = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/mattrudas",
+    icon: "/social/linkedin.svg",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/rudyroot/",
+    icon: "/social/instagram.svg",
+  },
+  {
+    label: "Spotify",
+    href: "https://open.spotify.com/",
+    icon: "/social/spotify.svg",
+  },
+] as const;
+
 /**
  * About page letter. Paragraphs support `**bold**` and `[label](url)`.
  */

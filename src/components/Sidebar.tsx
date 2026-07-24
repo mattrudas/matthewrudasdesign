@@ -1,10 +1,11 @@
-import { intro, site } from "@/lib/content";
+import { intro, site, socials } from "@/lib/content";
 import RichText from "./RichText";
 
 export default function Sidebar() {
   return (
     <aside className="flex min-h-0 flex-1 flex-col lg:pr-16">
-      <div className="mt-12 w-full lg:mt-auto">
+      {/* Intro block — vertically centered between nav and socials */}
+      <div className="flex flex-1 flex-col justify-center py-8">
         <h1 className="text-[28px] leading-snug font-normal text-balance sm:text-[32px]">
           {intro.headingLead}
           <span className="text-accent">{intro.headingName}</span>
@@ -28,7 +29,7 @@ export default function Sidebar() {
         <a
           id="contact"
           href={`mailto:${site.email}`}
-          className="mt-9 inline-flex items-center gap-2 rounded-full bg-button px-6 py-2 text-button-contrast transition-transform hover:-translate-y-0.5"
+          className="mt-9 inline-flex w-fit items-center gap-2 rounded-full bg-button px-6 py-2 text-button-contrast transition-transform hover:-translate-y-0.5"
         >
           Get in touch
           <svg
@@ -46,6 +47,28 @@ export default function Sidebar() {
           </svg>
         </a>
       </div>
+
+      <nav className="flex items-center gap-3 pb-1" aria-label="Social">
+        {socials.map((item) => (
+          <a
+            key={item.label}
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={item.label}
+            className="inline-flex h-9 w-9 items-center justify-center transition-transform hover:-translate-y-0.5"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={item.icon}
+              alt=""
+              width={36}
+              height={36}
+              className="h-9 w-9"
+            />
+          </a>
+        ))}
+      </nav>
     </aside>
   );
 }

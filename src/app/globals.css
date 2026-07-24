@@ -4,15 +4,17 @@
  * Design tokens
  * ------------------------------------------------------------------ */
 :root {
-  --background: #ffffff;
-  --foreground: #1c1b1a;
-  --muted: #9a9793;
-  --muted-strong: #6f6c67;
-  --border: #ececec;
+  /* Colors sampled directly from the Figma design */
+  --background: #f4f4f4;
+  --foreground: #000000;
+  --muted: #979797; /* project period */
+  --muted-strong: #4e4e4e; /* intro paragraphs */
+  --tag: #8b8a8d; /* project tags */
+  --description: #5f6368; /* project descriptions */
+  --border: #e5e5e5;
   --surface: #efeeec;
-  --surface-dark: #1d1d1b;
-  --accent: #5f8a52;
-  --button: #1c1b1a;
+  --accent: #005c15; /* highlighted name */
+  --button: #000000;
   --button-contrast: #ffffff;
   color-scheme: light;
 }
@@ -22,14 +24,14 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-muted-strong: var(--muted-strong);
+  --color-tag: var(--tag);
+  --color-description: var(--description);
   --color-border: var(--border);
   --color-surface: var(--surface);
-  --color-surface-dark: var(--surface-dark);
   --color-accent: var(--accent);
   --color-button: var(--button);
   --color-button-contrast: var(--button-contrast);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-roboto-flex);
 }
 
 /* ------------------------------------------------------------------ *
@@ -39,12 +41,29 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide the scrollbar (incl. the page scrollbar on the right) while keeping
+ * scroll functionality, across browsers and every scroll container. */
+html,
+body,
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE / legacy Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+  width: 0;
+  height: 0;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -91,5 +110,282 @@ body {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Lightbox — full-size project screenshot viewer
+ * Open: opacity dissolve with steady frost. Close: drop blur first
+ * then a short fade so exit stays snappy.
+ * ------------------------------------------------------------------ */
+.lightbox {
+  --lightbox-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --lightbox-duration: 0.45s;
+  --lightbox-exit-duration: 0.2s;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: zoom-out;
+  background: rgb(0 0 0 / 55%);
+  opacity: 0;
+  -webkit-backdrop-filter: blur(20px) saturate(1.05);
+  backdrop-filter: blur(20px) saturate(1.05);
+  transition: opacity var(--lightbox-duration) var(--lightbox-ease);
+}
+
+.lightbox.is-visible .lightbox-backdrop {
+  opacity: 1;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 18%);
+  color: #ffffff;
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity var(--lightbox-duration) var(--lightbox-ease),
+    background 0.25s ease;
+}
+
+.lightbox.is-visible .lightbox-close {
+  opacity: 1;
+}
+
+.lightbox-close:hover {
+  background: rgb(255 255 255 / 28%);
+}
+
+.lightbox-stage {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  max-width: min(1120px, 100%);
+  max-height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--lightbox-duration) var(--lightbox-ease);
+}
+
+.lightbox.is-visible .lightbox-stage {
+  opacity: 1;
+}
+
+.lightbox-image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100vh - 5rem);
+  object-fit: contain;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: none;
+  outline: none;
+}
+
+/* Close path: kill expensive blur immediately, fade out quickly */
+.lightbox.is-closing .lightbox-backdrop {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  transition-duration: var(--lightbox-exit-duration);
+}
+
+.lightbox.is-closing .lightbox-close,
+.lightbox.is-closing .lightbox-stage {
+  transition-duration: var(--lightbox-exit-duration);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-backdrop,
+  .lightbox-close,
+  .lightbox-stage {
+    transition: none;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ------------------------------------------------------------------ *
+ * Hover terms — accent underline + floating preview card
+ * ------------------------------------------------------------------ */
+.hover-accent-link {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-accent-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-term:hover .hover-accent-link,
+.hover-term:focus-within .hover-accent-link,
+.hover-accent-link:hover,
+.hover-accent-link:focus-visible {
+  color: var(--accent);
+}
+
+.hover-term:hover .hover-accent-link::after,
+.hover-term:focus-within .hover-accent-link::after,
+.hover-accent-link:hover::after,
+.hover-accent-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Matches Figma hover card: 374×189 photo + 58px caption bar */
+.hover-preview {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 14px);
+  z-index: 40;
+  display: flex;
+  width: min(374px, 78vw);
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 13px;
+  background: transparent;
+  box-shadow: 0 5px 53px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(calc(-50% + var(--hover-shift, 0px)), 8px) scale(0.98);
+  transform-origin: bottom center;
+  transition:
+    opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-preview.is-open {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translate(calc(-50% + var(--hover-shift, 0px)), 0) scale(1);
+}
+
+.hover-preview__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 374 / 189;
+  width: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #111;
+  border-radius: 13px 13px 0 0;
+  container-type: size;
+}
+
+.hover-preview__media > img:first-child {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hover-preview__media--embed {
+  position: relative;
+}
+
+.hover-preview__iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1280px;
+  height: calc(1280px * 189 / 374);
+  border: 0;
+  pointer-events: none;
+  transform: scale(calc(100cqw / 1280px));
+  transform-origin: top left;
+  background: #fff;
+}
+
+.hover-preview__footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  min-height: 58px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.hover-preview__caption {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 16px;
+  color: #000;
+}
+
+.hover-preview__badge {
+  display: block;
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hover-accent-link,
+  .hover-accent-link::after,
+  .hover-preview {
+    transition: none;
+  }
+
+  .hover-preview {
+    transform: translate(calc(-50% + var(--hover-shift, 0px)), 0) scale(1);
+  }
+
+  .hover-term:hover .hover-accent-link::after,
+  .hover-term:focus-within .hover-accent-link::after,
+  .hover-accent-link:hover::after,
+  .hover-accent-link:focus-visible::after {
+    transform: scaleX(1);
   }
 }

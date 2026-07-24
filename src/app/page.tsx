@@ -1,5 +1,7 @@
 import Sidebar from "@/components/Sidebar";
 import ProjectItem from "@/components/ProjectItem";
+import AboutHashRedirect from "@/components/AboutHashRedirect";
+import SiteHeader from "@/components/SiteHeader";
 import { projects, site } from "@/lib/content";
 
 export default function Home() {
@@ -13,12 +15,18 @@ export default function Home() {
   };
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-10 lg:px-10 lg:py-0">
-      <div className="grid gap-12 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
-        <Sidebar />
+    <div className="pb-10 lg:pb-0">
+      <AboutHashRedirect />
 
-        <main id="resume" className="min-w-0 lg:py-14">
-          <div className="space-y-16">
+      <div className="grid gap-12 px-6 lg:grid-cols-2 lg:gap-10 lg:px-0">
+        {/* Entire left column stays put while the work feed scrolls */}
+        <div className="flex flex-col lg:sticky lg:top-0 lg:h-screen lg:pl-6 lg:pb-6">
+          <SiteHeader pathname="/" />
+          <Sidebar />
+        </div>
+
+        <main id="resume" className="min-w-0 lg:pb-6">
+          <div className="space-y-8">
             {projects.map((project) => (
               <ProjectItem key={project.slug} project={project} />
             ))}

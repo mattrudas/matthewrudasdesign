@@ -1,40 +1,54 @@
-import type { Project } from "@/lib/content";
-import ProjectMock from "./ProjectMock";
-import Reveal from "./Reveal";
+"use client";
 
-const aspectByKind: Record<Project["kind"], string> = {
-  phones: "aspect-[16/8]",
-  extension: "aspect-[16/10]",
-  grid: "aspect-[16/9]",
-  browser: "aspect-[16/9]",
-  brand: "aspect-[16/7]",
-  shop: "aspect-[16/9]",
-};
+import { useState } from "react";
+import type { Project } from "@/lib/content";
+import Reveal from "./Reveal";
+import Lightbox from "./Lightbox";
 
 export default function ProjectItem({ project }: { project: Project }) {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
   return (
     <Reveal as="article">
-      <div
-        className={`w-full overflow-hidden rounded-xl bg-surface ${aspectByKind[project.kind]}`}
+      <button
+        type="button"
+        onClick={() => setLightboxOpen(true)}
+        aria-label={`View ${project.title} full size`}
+        className="group relative block aspect-[788/364] w-full cursor-zoom-in overflow-hidden bg-surface text-left"
       >
-        {project.image ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={project.image}
-            alt={project.title}
-            className="h-full w-full object-cover"
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={project.image}
+          alt={project.title}
+          className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.015]"
+        />
+      </button>
+
+      <div className="pt-4">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex flex-col gap-1">
+            <h2 className="text-base text-foreground">{project.title}</h2>
+            <p className="text-sm text-tag">{project.tags}</p>
+          </div>
+          <span className="mr-4 shrink-0 text-base text-muted">{project.period}</span>
+        </div>
+
+        <div className="mt-4 flex gap-2">
+          <span
+            aria-hidden="true"
+            className="w-px shrink-0 self-stretch bg-border"
           />
-        ) : (
-          <ProjectMock kind={project.kind} />
-        )}
+          <p className="text-sm font-light text-description">
+            {project.description}
+          </p>
+        </div>
       </div>
 
-      <div className="mt-4 flex items-baseline justify-between gap-4">
-        <h2 className="font-semibold text-foreground">{project.title}</h2>
-        <span className="shrink-0 text-muted">{project.period}</span>
-      </div>
-      <p className="mt-1 text-muted">{project.tags}</p>
-      <p className="mt-3 max-w-2xl text-muted-strong">{project.description}</p>
+      <Lightbox
+        open={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        slides={[{ src: project.image, alt: project.title }]}
+      />
     </Reveal>
   );
 }

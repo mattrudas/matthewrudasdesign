@@ -86,8 +86,6 @@ export type HoverCard = {
   badge: string;
   /** How the top image should be cropped. */
   imageFit?: "cover" | "contain";
-  /** CSS object-position for cover crops, e.g. "center 40%" or "70% 50%". */
-  imagePosition?: string;
   /** Optional live website embed shown instead of (or over) the static image. */
   embedUrl?: string;
 };
@@ -95,12 +93,10 @@ export type HoverCard = {
 /** Hover preview cards for key terms in the intro. */
 export const hoverCards: Record<string, HoverCard> = {
   "UCLA Law School": {
-    image: "/hover/ucla-photo.jpg",
+    image: "/hover/ucla-photo.png",
     caption:
       "Photo of me on the first day of law school, most likely heading into contracts.",
     badge: "/hover/ucla-seal.png",
-    imageFit: "cover",
-    imagePosition: "center center",
   },
   Upperstudy: {
     image: "/hover/upperstudy-photo.png",

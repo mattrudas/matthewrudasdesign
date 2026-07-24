@@ -82,7 +82,7 @@ export const intro = {
   headingRest: " a lead designer at Checkmate and a nice guy.",
   paragraphs: [
     "I took a leave of absence at [UCLA Law School](https://law.ucla.edu/) 5 years ago and started an apprenticeship with an agency that helps early stage designers and start ups called [Upperstudy](https://upperstudy.com/).",
-    "I was paired with a team of 3 cofounders to lead design for a company called [Checkmate](https://joincheckmate.com/). We now have over 2 millions users, reach hundreds of thousands people a day, have a growing team of 30, and are recently profitable.",
+    "I was paired with a team of 3 cofounders to lead design for a company called [Checkmate](https://joincheckmate.com/). We now have over 2 millions users, reach hundreds of thousands people a day, have a growing team of 30, and are driving significant revenue.",
     "I have been learning quickly, failing often, and building new things every single day. Over the years, Checkmate has grown and myself alongside it. I love the challenge of starting from scratch and seeing products transform.",
   ],
 } as const;

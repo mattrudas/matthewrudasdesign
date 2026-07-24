@@ -34,6 +34,11 @@ export const metadata: Metadata = {
     description: `Selected work by ${site.name}, ${site.role.toLowerCase()} at ${site.company}.`,
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: [{ url: "/icon.png", type: "image/png", sizes: "32x32" }],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

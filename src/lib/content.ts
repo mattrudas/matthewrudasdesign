@@ -119,7 +119,6 @@ export const hoverCards: Record<string, HoverCard> = {
       "Going #1 in the app store twice, raising 3 rounds of funding, and building a design team.",
     badge: "/hover/checkmate-logo.svg",
     imageFit: "cover",
-    embedUrl: "https://joincheckmate.com/",
   },
 };
 

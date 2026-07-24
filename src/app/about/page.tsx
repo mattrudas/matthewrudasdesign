@@ -40,7 +40,7 @@ export default function AboutPage() {
               {about.date}
             </p>
 
-            <div className="mt-4 space-y-3 text-xs font-light leading-[normal] text-foreground">
+            <div className="mt-4 space-y-3 text-[14pt] font-light leading-[normal] text-foreground">
               {about.paragraphs.map((paragraph, i) => (
                 <p key={i}>
                   <RichText text={paragraph} />

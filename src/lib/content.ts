@@ -29,17 +29,17 @@ export const socials = [
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/mattrudas",
-    icon: "/social/linkedin.svg",
+    icon: "/social/linkedin.png",
   },
   {
     label: "Instagram",
     href: "https://www.instagram.com/rudyroot/",
-    icon: "/social/instagram.svg",
+    icon: "/social/instagram.png",
   },
   {
     label: "Spotify",
     href: "https://open.spotify.com/",
-    icon: "/social/spotify.svg",
+    icon: "/social/spotify.png",
   },
 ] as const;
 

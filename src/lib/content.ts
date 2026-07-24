@@ -47,16 +47,23 @@ export const socials = [
  * About page letter. Paragraphs support `**bold**` and `[label](url)`.
  */
 export const about = {
-  role: "Designer",
+  role: "is in Los Angeles",
   date: "July 13 2026",
   signOff: "Matthew",
+  /** Photo strip under the letter card. */
+  photos: [
+    "/about/strip-1.png",
+    "/about/strip-2.png",
+    "/about/strip-3.png",
+    "/about/strip-4.png",
+  ],
   paragraphs: [
     "Hello,",
-    "Thank you for taking the time to checkout my portfolio and for deciding to click the about page, I really do appreciate it. Just a few things about me:",
-    "Professionally, I have spent much of my early career figuring out how to make new things. Since I can remember I think this has been something I loved to do and knew I would do, regardless of how that would come to be. I love seeing a process through to its end. I love the idea of creation and knowing that something I have put into the world did not once exist. I think that passion is the only way you can operate in an early stage startup and maintain any desire to keep executing.",
-    "I was, as many seemingly are, a convert to product design because it gave me the excitement and anticipation that I could create something from nothing. I had enrolled in UCLA Law as a KJD (Kindergarten-to-Juris Doctor) and immediately realized I needed time to understand what it meant to be an adult. Bright eyed and unready for a law school classroom still battling COVID, I was happy to take a leave of absence and planned on returning the coming fall.",
+    "Thank you for taking the time to checkout my portfolio and for deciding to click the about page, I really do appreciate it. Here's a few things about me:",
+    "Professionally, I have spent much of my early career figuring out how to make new things. Since I can remember I think this has been something I loved to do and knew I would do, regardless of how that would come to be. I love seeing a process through to its end. I love the idea of creation and knowing that something I have put into the world did not once exist. I think that this passion is the only way you can operate in an early stage startup and maintain any desire to keep executing.",
+    "I was, as many seemingly are, a convert to product design because it gave me the excitement and anticipation that I could create something from nothing. I had enrolled in UCLA Law as a KJD (Kindergarten-to-Juris Doctor) and quickly realized I needed time to understand what it meant to be an adult. Bright eyed and unready for a law school classroom still dealing with COVID, I was happy to take a leave of absence and planned on returning the coming fall.",
     "In my time off, I wanted to upskill and decided to lean on my talented friends from undergrad and a newly created UX Design Course from Google to see what I could do with design. Somehow, after completing the course, I had 3 projects I had brought to life and landed a placement with Upperstudy, working as a product designer with early stage start ups.",
-    "Naturally, I expected things to eventually fall through, as most startups do. I had anticipated a trial run in tech, a return to school, and then a placement into Los Angeles big law. Against the odds, the startup I was helping build continued (and continues) to find success. I became so enthralled with the continuous process of creation, iteration, that I knew I was officially a product design convert.",
+    "Naturally, I expected things to eventually fall through, as most startups do. I had anticipated a trial run in tech, a return to school, and then a placement into Los Angeles big law. Against the odds, the startup I was helping build continued (and continues) to find success. I became so enthralled with the continuous process of creation, iteration, and growth that I knew I was officially a product design convert.",
     "I am immensely grateful that design found me and gave me reason to stay. As a designer I feel empowered in everything I see around me. I feel as though I have found a secret club where things are more beautiful, doorways make more sense, function is essential, and my closest peers appreciate the aesthetics that make life interesting.",
     "Outside of design I love a lot of things, mainly: music, guitar, cats, sports, world events, writing, reading, yoga, movies and nature. I find the most pleasure in days that I have seen friends and enjoyed the sun. There's few things that provide me satisfaction more than being outside, using my body, and fighting exhaustion on a drive home.",
     "I love people, talking to them, and trying to understand them. Thank you for taking the time to visit my site and please reach out for discussion topics that sound interesting to you.",

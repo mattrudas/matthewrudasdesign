@@ -17,35 +17,52 @@ export default function AboutPage() {
       </div>
 
       <div className="flex min-h-screen items-center justify-center px-4 py-24 sm:px-6 sm:py-28">
-        <article className="w-full max-w-[1000px] rounded-[12px] bg-white p-6">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={site.aboutPortrait}
-            alt={site.name}
-            width={80}
-            height={80}
-            className="h-20 w-20 object-cover"
-          />
+        <div className="flex w-full max-w-[800px] flex-col gap-3">
+          <article className="w-full rounded-[12px] bg-white p-6">
+            <div className="flex items-center gap-6">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={site.aboutPortrait}
+                alt={site.name}
+                width={80}
+                height={80}
+                className="h-20 w-20 shrink-0 object-cover"
+              />
+              <div className="flex flex-col gap-2 text-xs font-medium leading-normal">
+                <h1 className="text-foreground">{site.name}</h1>
+                <p className="text-[#656565]">{about.role}</p>
+              </div>
+            </div>
 
-          <h1 className="mt-6 text-sm font-medium tracking-tight text-foreground">
-            {site.name}
-          </h1>
-          <p className="mt-1 text-sm text-[#656565]">{about.role}</p>
+            <hr className="mt-4 border-0 border-t border-border" />
 
-          <hr className="mt-6 border-0 border-t border-border" />
+            <p className="mt-4 text-xs font-medium text-accent">{about.date}</p>
 
-          <p className="mt-6 text-sm font-medium text-accent">{about.date}</p>
+            <div className="mt-4 space-y-3 text-xs leading-normal font-light text-foreground">
+              {about.paragraphs.map((paragraph, i) => (
+                <p key={i}>
+                  <RichText text={paragraph} />
+                </p>
+              ))}
+            </div>
 
-          <div className="mt-4 space-y-3 text-sm leading-relaxed font-light text-foreground">
-            {about.paragraphs.map((paragraph, i) => (
-              <p key={i}>
-                <RichText text={paragraph} />
-              </p>
+            <p className="mt-3 text-xs text-[#656565]">{about.signOff}</p>
+          </article>
+
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {about.photos.map((src) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={src}
+                src={src}
+                alt=""
+                width={191}
+                height={120}
+                className="h-[120px] w-full rounded-lg object-cover"
+              />
             ))}
           </div>
-
-          <p className="mt-3 text-sm text-[#656565]">{about.signOff}</p>
-        </article>
+        </div>
       </div>
     </div>
   );

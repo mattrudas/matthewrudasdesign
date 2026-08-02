@@ -28,7 +28,7 @@ export default function AboutPage() {
                 height={80}
                 className="h-20 w-20 shrink-0 object-cover"
               />
-              <div className="flex flex-col gap-2 text-xs font-medium leading-[normal]">
+              <div className="flex flex-col gap-2 text-[12pt] font-medium leading-[normal]">
                 <h1 className="text-foreground">{site.name}</h1>
                 <p className="text-[#656565]">{about.role}</p>
               </div>
@@ -36,11 +36,11 @@ export default function AboutPage() {
 
             <hr className="mt-4 border-0 border-t border-border" />
 
-            <p className="mt-4 text-xs font-medium leading-[normal] text-accent">
+            <p className="mt-4 text-[12pt] font-medium leading-[normal] text-accent">
               {about.date}
             </p>
 
-            <div className="mt-4 space-y-3 text-[14pt] font-light leading-[normal] text-foreground">
+            <div className="mt-4 space-y-3 text-[12pt] font-light leading-[normal] text-foreground">
               {about.paragraphs.map((paragraph, i) => (
                 <p key={i}>
                   <RichText text={paragraph} />
@@ -48,7 +48,7 @@ export default function AboutPage() {
               ))}
             </div>
 
-            <p className="mt-3 text-xs leading-[normal] text-[#656565]">
+            <p className="mt-3 text-[12pt] leading-[normal] text-[#656565]">
               {about.signOff}
             </p>
           </article>

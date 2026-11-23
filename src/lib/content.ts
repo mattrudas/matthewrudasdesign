@@ -147,40 +147,34 @@ export type Project = {
   image: string;
   /** Optional link to a live, clickable prototype ("Try it out"). */
   tryUrl?: string;
+  /** Optional embeddable video ("See how it works"), e.g. an Instagram /embed URL. */
+  videoUrl?: string;
 };
 
 export const projects: Project[] = [
   {
+    slug: "nova-career",
+    company: "NOVA",
+    title: "NOVA Career",
+    tags: "product design, iOS, web",
+    period: "2026 - Present",
+    description:
+      "Designing the Career hub where creatives keep track of their project credits, clients, and collaborators in one place.",
+    image: "/work/nova-career.png",
+  },
+  {
     slug: "nova-profile",
     company: "NOVA",
-    title: "NOVA Profile 2.0",
+    title: "NOVA Profile",
     tags: "product design, iOS, web, design systems",
     period: "2026 - Present",
     description:
       "Redesigning profiles into one unified experience for clients and creatives across iOS and web, built to show credentials and feel credible at a glance.",
-    image: "/work/nova.png",
+    image: "/work/nova-profile.png",
     // Coded prototype: Career page (index) and Profile page
     tryUrl: "https://novaproto.vercel.app/profile.html",
-  },
-  {
-    slug: "nova-projects",
-    company: "NOVA",
-    title: "NOVA Projects 2.0",
-    tags: "product design, iOS",
-    period: "2026 - Present",
-    description:
-      "Redesigned the project page, including adding projects to your profile, credit requests, and surfacing the people you've worked with.",
-    image: "/work/nova.png",
-  },
-  {
-    slug: "nova-onboarding",
-    company: "NOVA",
-    title: "NOVA Sign-Up & Onboarding",
-    tags: "product design, web, responsive design",
-    period: "2026 - Present",
-    description:
-      "Brought NOVA's iOS sign-up and onboarding to desktop, tablet, and mobile web, including Instagram verification for creatives with and without credits.",
-    image: "/work/nova.png",
+    // Instagram post DfYFQXqAbz- (embed version so it plays in the modal)
+    videoUrl: "https://www.instagram.com/p/DfYFQXqAbz-/embed/",
   },
   {
     slug: "nova-collaborative-projects",
@@ -190,7 +184,7 @@ export const projects: Project[] = [
     period: "2026 - Present",
     description:
       "Designing how creatives and brands build, credit, and share projects together.",
-    image: "/work/nova.png",
+    image: "/work/nova-collaborative-projects.png",
   },
   {
     slug: "app",

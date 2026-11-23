@@ -163,8 +163,8 @@ export const projects: Project[] = [
     image: "/work/nova-career.png",
     // Coded prototype: Career page (You hub)
     tryUrl: "https://novaproto.vercel.app/",
-    // Instagram post DfYFQXqAbz- (embed version so it plays in the modal)
-    videoUrl: "https://www.instagram.com/p/DfYFQXqAbz-/embed/",
+    // Instagram post DfYFQXqAbz-, 2nd carousel item (embed version so it plays in the modal)
+    videoUrl: "https://www.instagram.com/p/DfYFQXqAbz-/embed/?img_index=2",
   },
   {
     slug: "nova-profile",

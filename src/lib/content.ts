@@ -131,8 +131,13 @@ export const hoverCards: Record<string, HoverCard> = {
   },
 };
 
+export const companies = ["NOVA", "Checkmate"] as const;
+export type Company = (typeof companies)[number];
+
 export type Project = {
   slug: string;
+  /** Which pill (NOVA / Checkmate) this project is listed under. */
+  company: Company;
   title: string;
   tags: string;
   period: string;
@@ -143,16 +148,48 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "nova",
-    title: "NOVA",
-    tags: "product design, design systems, iOS, web",
+    slug: "nova-profile",
+    company: "NOVA",
+    title: "NOVA Profile 2.0",
+    tags: "product design, iOS, web, design systems",
     period: "2026 - Present",
     description:
-      "Designing NOVA's network connecting creative talent with top jobs in the industry, across iOS and web.",
+      "Redesigning profiles into one unified experience for clients and creatives across iOS and web, built to show credentials and feel credible at a glance.",
+    image: "/work/nova.png",
+  },
+  {
+    slug: "nova-projects",
+    company: "NOVA",
+    title: "NOVA Projects 2.0",
+    tags: "product design, iOS",
+    period: "2026 - Present",
+    description:
+      "Redesigned the project page, including adding projects to your profile, credit requests, and surfacing the people you've worked with.",
+    image: "/work/nova.png",
+  },
+  {
+    slug: "nova-onboarding",
+    company: "NOVA",
+    title: "NOVA Sign-Up & Onboarding",
+    tags: "product design, web, responsive design",
+    period: "2026 - Present",
+    description:
+      "Brought NOVA's iOS sign-up and onboarding to desktop, tablet, and mobile web, including Instagram verification for creatives with and without credits.",
+    image: "/work/nova.png",
+  },
+  {
+    slug: "nova-collaborative-projects",
+    company: "NOVA",
+    title: "NOVA Collaborative Projects",
+    tags: "product design",
+    period: "2026 - Present",
+    description:
+      "Designing how creatives and brands build, credit, and share projects together.",
     image: "/work/nova.png",
   },
   {
     slug: "app",
+    company: "Checkmate",
     title: "Checkmate App",
     tags: "product design, brand design, user research",
     period: "2022 - 2026",
@@ -162,6 +199,7 @@ export const projects: Project[] = [
   },
   {
     slug: "extension",
+    company: "Checkmate",
     title: "Checkmate Extension",
     tags: "product design, brand design, user research",
     period: "2022 - 2026",
@@ -171,6 +209,7 @@ export const projects: Project[] = [
   },
   {
     slug: "lifecycle",
+    company: "Checkmate",
     title: "Checkmate Lifecycle",
     tags: "referral loops, marketing outreach, user nurturing",
     period: "2022 - 2026",
@@ -180,6 +219,7 @@ export const projects: Project[] = [
   },
   {
     slug: "brands",
+    company: "Checkmate",
     title: "Checkmate for Brands",
     tags: "brand onboarding, dashboard design, market research, user research, landing pages, vibe coding",
     period: "2022 - 2026",
@@ -189,6 +229,7 @@ export const projects: Project[] = [
   },
   {
     slug: "brand",
+    company: "Checkmate",
     title: "Checkmate Brand",
     tags: "brand design, graphic design, design systems, deck design",
     period: "2022 - 2026",
@@ -198,6 +239,7 @@ export const projects: Project[] = [
   },
   {
     slug: "web",
+    company: "Checkmate",
     title: "Checkmate Web",
     tags: "brand design, graphic design, design systems, deck design",
     period: "2022 - 2026",

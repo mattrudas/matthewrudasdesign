@@ -14,7 +14,7 @@ export default function ProjectItem({ project }: { project: Project }) {
         type="button"
         onClick={() => setLightboxOpen(true)}
         aria-label={`View ${project.title} full size`}
-        className="group relative block aspect-[788/364] w-full cursor-zoom-in overflow-hidden bg-surface text-left"
+        className="group relative block aspect-[788/364] w-full cursor-zoom-in overflow-hidden rounded-[12px] bg-surface text-left"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img

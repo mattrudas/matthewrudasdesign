@@ -11,7 +11,7 @@ export default function WorkFeed() {
 
   return (
     <>
-      <div role="group" aria-label="Filter work by company" className="mb-6 flex gap-2">
+      <div role="group" aria-label="Filter work by company" className="mb-6 flex h-12 items-center gap-2">
         {companies.map((company) => {
           const selected = company === active;
           return (

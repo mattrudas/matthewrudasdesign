@@ -25,7 +25,10 @@ export default function Home() {
           <Sidebar />
         </div>
 
-        <main id="resume" className="min-w-0 lg:pb-6">
+        <main
+          id="resume"
+          className="min-w-0 lg:my-3 lg:mr-3 lg:min-h-[calc(100vh-24px)] lg:rounded-[20px] lg:bg-card lg:px-6 lg:pt-3 lg:pb-6"
+        >
           <WorkFeed />
         </main>
       </div>

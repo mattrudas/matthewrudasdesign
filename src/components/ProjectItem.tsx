@@ -52,7 +52,7 @@ export default function ProjectItem({ project }: { project: Project }) {
               <button
                 type="button"
                 onClick={() => setProtoOpen(true)}
-                className="inline-flex items-center rounded-full bg-button px-4 py-1.5 text-sm text-button-contrast transition-opacity hover:opacity-85 active:opacity-70"
+                className="inline-flex items-center rounded-full border border-border px-4 py-1.5 text-sm text-foreground transition-colors hover:bg-surface active:opacity-70"
               >
                 Try it out
               </button>
@@ -61,7 +61,7 @@ export default function ProjectItem({ project }: { project: Project }) {
               <button
                 type="button"
                 onClick={() => setVideoOpen(true)}
-                className="inline-flex items-center rounded-full border border-border px-4 py-1.5 text-sm text-foreground transition-colors hover:bg-surface active:opacity-70"
+                className="inline-flex items-center rounded-full bg-button px-4 py-1.5 text-sm text-button-contrast transition-opacity hover:opacity-85 active:opacity-70"
               >
                 See how it works
               </button>

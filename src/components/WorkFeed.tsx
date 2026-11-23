@@ -41,7 +41,7 @@ export default function WorkFeed() {
               onClick={() => setActive(company)}
               className={`inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm transition-colors ${
                 selected
-                  ? "border-accent bg-accent text-white"
+                  ? "border-button bg-button text-button-contrast"
                   : "border-border text-muted-strong hover:text-foreground"
               }`}
             >

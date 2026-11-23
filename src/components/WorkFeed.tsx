@@ -22,7 +22,7 @@ export default function WorkFeed() {
               onClick={() => setActive(company)}
               className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${
                 selected
-                  ? "border-button bg-button text-button-contrast"
+                  ? "border-accent bg-accent text-white"
                   : "border-border text-muted-strong hover:text-foreground"
               }`}
             >

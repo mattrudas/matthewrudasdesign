@@ -8,7 +8,7 @@ type PrototypeModalProps = {
   url: string;
   onClose: () => void;
   /** "full" = near full screen (prototypes); "media" = narrow portrait (Instagram embeds). */
-  variant?: "full" | "media";
+  variant?: "full" | "media" | "mobile";
 };
 
 /**
@@ -49,7 +49,11 @@ export default function PrototypeModal({
         aria-modal="true"
         aria-labelledby={titleId}
         className={`proto-modal flex h-full w-full flex-col overflow-hidden rounded-[20px] bg-card shadow-2xl ${
-          variant === "media" ? "max-h-[880px] max-w-[540px]" : ""
+          variant === "media"
+            ? "max-h-[880px] max-w-[540px]"
+            : variant === "mobile"
+              ? "max-h-[922px] max-w-[402px]"
+              : ""
         }`}
       >
         <div className="flex h-12 shrink-0 items-center justify-between border-b border-border pr-2 pl-5">

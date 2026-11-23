@@ -148,6 +148,8 @@ export type Project = {
   image: string;
   /** Optional link to a live, clickable prototype ("Try it out"). */
   tryUrl?: string;
+  /** Open the prototype in a phone-sized modal instead of the full-screen one. */
+  tryMobile?: boolean;
   /** Optional embeddable video ("See how it works"), e.g. an Instagram /embed URL. */
   videoUrl?: string;
 };
@@ -188,7 +190,8 @@ export const projects: Project[] = [
     description:
       "Designing how creatives and brands build, credit, and share projects together.",
     image: "/work/nova-collaborative-projects.png",
-    tryUrl: "https://novaproto.vercel.app/#project",
+    tryUrl: "https://novaproto.vercel.app/add-to-profile.html",
+    tryMobile: true,
   },
   {
     slug: "app",

@@ -42,6 +42,17 @@ export default function ProjectItem({ project }: { project: Project }) {
             {project.description}
           </p>
         </div>
+
+        {project.tryUrl ? (
+          <a
+            href={project.tryUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center rounded-full bg-button px-4 py-1.5 text-sm text-button-contrast transition-opacity hover:opacity-85"
+          >
+            Try it out
+          </a>
+        ) : null}
       </div>
 
       <Lightbox

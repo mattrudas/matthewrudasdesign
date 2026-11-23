@@ -144,6 +144,8 @@ export type Project = {
   description: string;
   /** Exported mockup image placed in /public/work. */
   image: string;
+  /** Optional link to a live, clickable prototype ("Try it out"). */
+  tryUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -156,6 +158,8 @@ export const projects: Project[] = [
     description:
       "Redesigning profiles into one unified experience for clients and creatives across iOS and web, built to show credentials and feel credible at a glance.",
     image: "/work/nova.png",
+    // Coded prototype: Career page (index) and Profile page
+    tryUrl: "https://novaproto.vercel.app/profile.html",
   },
   {
     slug: "nova-projects",

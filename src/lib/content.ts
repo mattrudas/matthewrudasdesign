@@ -161,6 +161,10 @@ export const projects: Project[] = [
     description:
       "Designing the Career hub where creatives keep track of their project credits, clients, and collaborators in one place.",
     image: "/work/nova-career.png",
+    // Coded prototype: Career page (You hub)
+    tryUrl: "https://novaproto.vercel.app/",
+    // Instagram post DfYFQXqAbz- (embed version so it plays in the modal)
+    videoUrl: "https://www.instagram.com/p/DfYFQXqAbz-/embed/",
   },
   {
     slug: "nova-profile",
@@ -171,10 +175,8 @@ export const projects: Project[] = [
     description:
       "Redesigning profiles into one unified experience for clients and creatives across iOS and web, built to show credentials and feel credible at a glance.",
     image: "/work/nova-profile.png",
-    // Coded prototype: Career page (index) and Profile page
+    // Coded prototype: Profile subpage
     tryUrl: "https://novaproto.vercel.app/profile.html",
-    // Instagram post DfYFQXqAbz- (embed version so it plays in the modal)
-    videoUrl: "https://www.instagram.com/p/DfYFQXqAbz-/embed/",
   },
   {
     slug: "nova-collaborative-projects",

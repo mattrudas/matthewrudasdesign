@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { companies, projects, type Company } from "@/lib/content";
 import ProjectItem from "./ProjectItem";
 
@@ -26,12 +26,28 @@ const LOGOS: Record<Company, React.ReactNode> = {
 /** Work list with NOVA / Checkmate pills. NOVA is selected by default. */
 export default function WorkFeed() {
   const [active, setActive] = useState<Company>("NOVA");
+  // Soft shadow under the pinned pills only once the work card has scrolled
+  const barRef = useRef<HTMLDivElement>(null);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const scroller = barRef.current?.closest("main");
+    if (!scroller) return;
+    const onScroll = () => setScrolled(scroller.scrollTop > 0);
+    onScroll();
+    scroller.addEventListener("scroll", onScroll, { passive: true });
+    return () => scroller.removeEventListener("scroll", onScroll);
+  }, []);
   const visible = projects.filter((project) => project.company === active);
 
   return (
     <>
       {/* Pills stay pinned to the top of the work card while the list scrolls (desktop) */}
-      <div className="mb-6 lg:sticky lg:top-0 lg:z-10 lg:mb-0 lg:bg-[linear-gradient(to_bottom,var(--card)_calc(100%-24px),transparent)] lg:pt-3 lg:pb-[17px]">
+      <div
+        ref={barRef}
+        className={`mb-6 transition-shadow duration-200 lg:sticky lg:top-0 lg:z-10 lg:-mx-6 lg:mb-0 lg:bg-card lg:px-6 lg:pt-3 lg:pb-[17px] ${
+          scrolled ? "lg:shadow-[0_6px_14px_-8px_rgba(0,0,0,0.08)]" : ""
+        }`}
+      >
       <div role="group" aria-label="Filter work by company" className="flex h-12 items-center gap-2">
         {companies.map((company) => {
           const selected = company === active;

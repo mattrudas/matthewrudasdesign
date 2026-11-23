@@ -156,7 +156,7 @@ export const projects: Project[] = [
   {
     slug: "nova-career",
     company: "NOVA",
-    title: "NOVA Career",
+    title: "NOVA Career / Website Redesign",
     tags: "product design, iOS, web",
     period: "2026 - Present",
     description:

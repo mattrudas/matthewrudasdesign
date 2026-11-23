@@ -30,7 +30,9 @@ export default function WorkFeed() {
 
   return (
     <>
-      <div role="group" aria-label="Filter work by company" className="mb-6 flex h-12 items-center gap-2">
+      {/* Pills stay pinned to the top of the work card while the list scrolls (desktop) */}
+      <div className="mb-6 lg:sticky lg:top-0 lg:z-10 lg:mb-0 lg:bg-card lg:pt-3 lg:pb-6">
+      <div role="group" aria-label="Filter work by company" className="flex h-12 items-center gap-2">
         {companies.map((company) => {
           const selected = company === active;
           return (
@@ -50,6 +52,7 @@ export default function WorkFeed() {
             </button>
           );
         })}
+      </div>
       </div>
 
       <div className="space-y-8">

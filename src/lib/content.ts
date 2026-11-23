@@ -84,7 +84,7 @@ export const intro = {
   paragraphs: [
     "I took a leave of absence at [UCLA Law School](https://law.ucla.edu/) 5 years ago and started an apprenticeship with an agency that helps early stage designers and start ups called [Upperstudy](https://upperstudy.com/).",
     "I was paired with a team of 3 cofounders to lead design for a company called [Checkmate](https://joincheckmate.com/). We grew to over 2 million users, reached hundreds of thousands of people a day, built a team of 30, and drove significant revenue.",
-    "I'm currently working with a small team at [NOVA](https://itsnova.com/), where we're working on building a network that connects creative talent with top jobs in the industry. The platform has connected creatives with over $100M in projects and aspires to build a better place for all professionals doing project based work.",
+    "I'm currently working with a small team at [NOVA](https://itsnova.com/), where we're building a network that connects creative talent with top jobs in the industry. The platform has connected creatives with over $100M in projects and aspires to build a better place for all professionals doing project based work.",
     "I have been learning quickly, failing often, and building new things every single day. Over the years, Checkmate has grown and myself alongside it. I love the challenge of starting from scratch and seeing products transform.",
   ],
 } as const;

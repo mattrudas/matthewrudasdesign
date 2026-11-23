@@ -27,7 +27,7 @@ export default function Home() {
 
         <main
           id="resume"
-          className="min-w-0 lg:sticky lg:top-3 lg:my-3 lg:mr-3 lg:h-[calc(100vh-24px)] lg:overflow-y-auto lg:overscroll-contain lg:rounded-[20px] lg:bg-card lg:px-6 lg:pt-3 lg:pb-6"
+          className="min-w-0 lg:sticky lg:top-3 lg:my-3 lg:mr-3 lg:h-[calc(100vh-24px)] lg:overflow-y-auto lg:overscroll-contain lg:rounded-[20px] lg:bg-card lg:px-6 lg:pt-0 lg:pb-6"
         >
           <WorkFeed />
         </main>

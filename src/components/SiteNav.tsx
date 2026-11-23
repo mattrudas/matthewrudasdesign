@@ -1,8 +1,9 @@
 import { nav, site } from "@/lib/content";
+import AboutNavItem from "./AboutNavItem";
 
 /**
- * Top navigation. Uses plain anchors (not next/link) so About always does a
- * full navigation to /about — more reliable on SSO-protected preview deploys.
+ * Top navigation. About opens the letter in a pop-up (AboutNavItem); the
+ * /about page still exists for direct links.
  * Avatar GIF links home.
  */
 export default function SiteNav({ pathname = "" }: { pathname?: string }) {
@@ -34,6 +35,11 @@ export default function SiteNav({ pathname = "" }: { pathname?: string }) {
           !external &&
           isInternalPage &&
           (pathname === item.href || pathname.startsWith(`${item.href}/`));
+
+        // About opens as a pop-up instead of navigating
+        if (item.href === "/about") {
+          return <AboutNavItem key={item.href} label={item.label} active={active} />;
+        }
 
         return (
           <a

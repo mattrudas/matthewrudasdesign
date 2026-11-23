@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SiteHeader from "@/components/SiteHeader";
-import RichText from "@/components/RichText";
-import { about, site } from "@/lib/content";
+import AboutLetter from "@/components/AboutLetter";
+import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "About",
@@ -20,38 +20,7 @@ export default function AboutPage() {
       <div className="flex min-h-dvh items-center justify-center px-4 py-6 sm:px-6 lg:h-dvh lg:min-h-0 lg:py-3">
         <div className="flex w-full max-w-[800px] flex-col gap-3 lg:h-full">
           <article className="w-full rounded-[20px] bg-card p-6 lg:min-h-0 lg:flex-1 lg:overflow-y-auto lg:overscroll-contain">
-            <div className="flex items-center gap-6">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={site.aboutPortrait}
-                alt={site.name}
-                width={80}
-                height={80}
-                className="h-20 w-20 shrink-0 rounded-[12px] object-cover"
-              />
-              <div className="flex flex-col gap-2 text-[15px] font-medium leading-[normal]">
-                <h1 className="text-foreground">{site.name}</h1>
-                <p className="text-[#656565]">{about.role}</p>
-              </div>
-            </div>
-
-            <hr className="mt-4 border-0 border-t border-border" />
-
-            <p className="mt-4 text-[15px] font-medium leading-[normal] text-accent">
-              {about.date}
-            </p>
-
-            <div className="mt-4 space-y-3 text-[15px] font-light leading-[normal] text-foreground">
-              {about.paragraphs.map((paragraph, i) => (
-                <p key={i}>
-                  <RichText text={paragraph} />
-                </p>
-              ))}
-            </div>
-
-            <p className="mt-3 text-[15px] leading-[normal] text-[#656565]">
-              {about.signOff}
-            </p>
+            <AboutLetter />
           </article>
 
           {/* Photo strip (about.photos) hidden for now */}

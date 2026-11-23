@@ -181,7 +181,7 @@ export const projects: Project[] = [
   {
     slug: "nova-collaborative-projects",
     company: "NOVA",
-    title: "NOVA Collaborative Projects / Shared Network",
+    title: "Collaborative Projects / Shared Network",
     tags: "product design",
     period: "2026 - Present",
     description:

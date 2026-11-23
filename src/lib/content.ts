@@ -188,6 +188,7 @@ export const projects: Project[] = [
     description:
       "Designing how creatives and brands build, credit, and share projects together.",
     image: "/work/nova-collaborative-projects.png",
+    tryUrl: "https://novaproto.vercel.app/#project",
   },
   {
     slug: "app",

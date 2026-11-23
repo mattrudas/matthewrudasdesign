@@ -412,3 +412,29 @@ body {
     transform: scaleX(1);
   }
 }
+
+/* ------------------------------------------------------------------ *
+ * Prototype modal ("Try it out")
+ * ------------------------------------------------------------------ */
+.proto-scrim {
+  animation: proto-fade 0.25s ease-out both;
+}
+
+.proto-modal {
+  animation: proto-rise 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes proto-fade {
+  from { opacity: 0; }
+}
+
+@keyframes proto-rise {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proto-scrim,
+  .proto-modal {
+    animation: none;
+  }
+}

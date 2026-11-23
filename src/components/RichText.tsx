@@ -6,7 +6,14 @@ import HoverTerm from "./HoverTerm";
  * Renders a string with inline `**bold**` and `[label](url)` markup.
  * Labels present in `hoverCards` get a gentle underline + floating preview.
  */
-export default function RichText({ text }: { text: string }) {
+export default function RichText({
+  text,
+  linkClassName,
+}: {
+  text: string;
+  /** Passed to hover-card links (e.g. "font-normal" in the heading). */
+  linkClassName?: string;
+}) {
   const parts = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g).filter(Boolean);
   return (
     <>
@@ -26,7 +33,13 @@ export default function RichText({ text }: { text: string }) {
 
           if (card) {
             return (
-              <HoverTerm key={i} label={label} href={href} card={card} />
+              <HoverTerm
+                key={i}
+                label={label}
+                href={href}
+                card={card}
+                linkClassName={linkClassName}
+              />
             );
           }
 

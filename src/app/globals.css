@@ -270,6 +270,12 @@ body {
   color: var(--accent);
 }
 
+/* Pressed (click) state */
+.hover-accent-link:active {
+  opacity: 0.6;
+  transition: opacity 0.1s;
+}
+
 .hover-term:hover .hover-accent-link::after,
 .hover-term:focus-within .hover-accent-link::after,
 .hover-accent-link:hover::after,
@@ -305,6 +311,18 @@ body {
 .hover-preview.is-open {
   pointer-events: auto;
   opacity: 1;
+  transform: translate(calc(-50% + var(--hover-shift, 0px)), 0) scale(1);
+}
+
+/* Not enough room above (heading): open below the term instead */
+.hover-preview.is-below {
+  top: calc(100% + 14px);
+  bottom: auto;
+  transform: translate(calc(-50% + var(--hover-shift, 0px)), -8px) scale(0.98);
+  transform-origin: top center;
+}
+
+.hover-preview.is-below.is-open {
   transform: translate(calc(-50% + var(--hover-shift, 0px)), 0) scale(1);
 }
 
@@ -392,5 +410,31 @@ body {
   .hover-accent-link:hover::after,
   .hover-accent-link:focus-visible::after {
     transform: scaleX(1);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Prototype modal ("Try it out")
+ * ------------------------------------------------------------------ */
+.proto-scrim {
+  animation: proto-fade 0.25s ease-out both;
+}
+
+.proto-modal {
+  animation: proto-rise 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes proto-fade {
+  from { opacity: 0; }
+}
+
+@keyframes proto-rise {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proto-scrim,
+  .proto-modal {
+    animation: none;
   }
 }

@@ -7,6 +7,8 @@ type HoverTermProps = {
   label: string;
   href: string;
   card: HoverCard;
+  /** Weight/style for the link text. Defaults to semibold (paragraph links). */
+  linkClassName?: string;
 };
 
 const VIEWPORT_PAD = 16;
@@ -16,10 +18,17 @@ const VIEWPORT_PAD = 16;
  * modal that gently fades/slides in on hover (or keyboard focus).
  * Horizontal position is clamped so the card never clips the viewport edge.
  */
-export default function HoverTerm({ label, href, card }: HoverTermProps) {
+export default function HoverTerm({
+  label,
+  href,
+  card,
+  linkClassName = "font-semibold",
+}: HoverTermProps) {
   const [open, setOpen] = useState(false);
   const [embedReady, setEmbedReady] = useState(false);
   const [shiftX, setShiftX] = useState(0);
+  // Flip the card below the term when there isn't room above (e.g. the heading).
+  const [below, setBelow] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const termRef = useRef<HTMLSpanElement | null>(null);
   const previewRef = useRef<HTMLSpanElement | null>(null);
@@ -51,6 +60,8 @@ export default function HoverTerm({ label, href, card }: HoverTermProps) {
     const clampedLeft = Math.min(Math.max(idealLeft, minLeft), maxLeft);
 
     setShiftX(clampedLeft - idealLeft);
+    const previewHeight = preview.offsetHeight || 247;
+    setBelow(termRect.top < previewHeight + 14 + VIEWPORT_PAD);
   };
 
   const show = () => {
@@ -94,7 +105,7 @@ export default function HoverTerm({ label, href, card }: HoverTermProps) {
         href={href}
         target={external ? "_blank" : undefined}
         rel={external ? "noreferrer noopener" : undefined}
-        className="hover-accent-link font-semibold"
+        className={`hover-accent-link ${linkClassName}`}
         aria-describedby={open ? cardId : undefined}
       >
         {label}
@@ -105,7 +116,7 @@ export default function HoverTerm({ label, href, card }: HoverTermProps) {
         id={cardId}
         role="tooltip"
         aria-hidden={!open}
-        className={`hover-preview ${open ? "is-open" : ""}`}
+        className={`hover-preview ${open ? "is-open" : ""} ${below ? "is-below" : ""}`}
         style={{ "--hover-shift": `${shiftX}px` } as CSSProperties}
         onMouseEnter={show}
         onMouseLeave={hide}

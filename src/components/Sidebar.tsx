@@ -9,7 +9,7 @@ export default function Sidebar() {
         <h1 className="text-[28px] leading-snug font-normal text-balance sm:text-[32px]">
           {intro.headingLead}
           <span className="text-accent">{intro.headingName}</span>
-          {intro.headingRest}
+          <RichText text={intro.headingRest} linkClassName="font-normal" />
         </h1>
 
         <div className="mt-10 flex w-full gap-4">

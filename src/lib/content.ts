@@ -72,6 +72,7 @@ export const about = {
 
 /**
  * The intro block. The heading name is rendered in the accent color.
+ * `headingRest` supports `[label](url)` too (NOVA gets its hover card).
  * Paragraphs support `**bold**` and `[label](url)` link syntax inline.
  * Labels matching `hoverCards` keys get a preview card on hover.
  */
@@ -79,7 +80,7 @@ export const intro = {
   headingLead: "Hi! I'm ",
   /** Rendered in the accent (green) color. */
   headingName: "Matthew Rudas,",
-  headingRest: " currently designing for creatives at NOVA.",
+  headingRest: " currently designing for creatives at [NOVA](https://itsnova.com/).",
   paragraphs: [
     "I took a leave of absence at [UCLA Law School](https://law.ucla.edu/) 5 years ago and started an apprenticeship with an agency that helps early stage designers and start ups called [Upperstudy](https://upperstudy.com/).",
     "I was paired with a team of 3 cofounders to lead design for a company called [Checkmate](https://joincheckmate.com/). We grew to over 2 million users, reached hundreds of thousands of people a day, built a team of 30, and drove significant revenue.",

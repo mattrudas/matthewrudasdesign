@@ -4,9 +4,11 @@ import { useState } from "react";
 import type { Project } from "@/lib/content";
 import Reveal from "./Reveal";
 import Lightbox from "./Lightbox";
+import PrototypeModal from "./PrototypeModal";
 
 export default function ProjectItem({ project }: { project: Project }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [protoOpen, setProtoOpen] = useState(false);
 
   return (
     <Reveal as="article">
@@ -44,16 +46,23 @@ export default function ProjectItem({ project }: { project: Project }) {
         </div>
 
         {project.tryUrl ? (
-          <a
-            href={project.tryUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center rounded-full bg-button px-4 py-1.5 text-sm text-button-contrast transition-opacity hover:opacity-85"
+          <button
+            type="button"
+            onClick={() => setProtoOpen(true)}
+            className="mt-4 inline-flex items-center rounded-full bg-button px-4 py-1.5 text-sm text-button-contrast transition-opacity hover:opacity-85 active:opacity-70"
           >
             Try it out
-          </a>
+          </button>
         ) : null}
       </div>
+
+      {protoOpen && project.tryUrl ? (
+        <PrototypeModal
+          title={project.title}
+          url={project.tryUrl}
+          onClose={() => setProtoOpen(false)}
+        />
+      ) : null}
 
       <Lightbox
         open={lightboxOpen}

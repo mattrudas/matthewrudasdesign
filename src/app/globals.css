@@ -270,6 +270,12 @@ body {
   color: var(--accent);
 }
 
+/* Pressed (click) state */
+.hover-accent-link:active {
+  opacity: 0.6;
+  transition: opacity 0.1s;
+}
+
 .hover-term:hover .hover-accent-link::after,
 .hover-term:focus-within .hover-accent-link::after,
 .hover-accent-link:hover::after,
@@ -305,6 +311,18 @@ body {
 .hover-preview.is-open {
   pointer-events: auto;
   opacity: 1;
+  transform: translate(calc(-50% + var(--hover-shift, 0px)), 0) scale(1);
+}
+
+/* Not enough room above (heading): open below the term instead */
+.hover-preview.is-below {
+  top: calc(100% + 14px);
+  bottom: auto;
+  transform: translate(calc(-50% + var(--hover-shift, 0px)), -8px) scale(0.98);
+  transform-origin: top center;
+}
+
+.hover-preview.is-below.is-open {
   transform: translate(calc(-50% + var(--hover-shift, 0px)), 0) scale(1);
 }
 

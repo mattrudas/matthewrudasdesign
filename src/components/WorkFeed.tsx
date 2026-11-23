@@ -31,7 +31,7 @@ export default function WorkFeed() {
   return (
     <>
       {/* Pills stay pinned to the top of the work card while the list scrolls (desktop) */}
-      <div className="mb-6 lg:sticky lg:top-0 lg:z-10 lg:mb-0 lg:bg-card lg:pt-3 lg:pb-6">
+      <div className="mb-6 lg:sticky lg:top-0 lg:z-10 lg:mb-0 lg:bg-[linear-gradient(to_bottom,var(--card)_calc(100%-24px),transparent)] lg:pt-3 lg:pb-[17px]">
       <div role="group" aria-label="Filter work by company" className="flex h-12 items-center gap-2">
         {companies.map((company) => {
           const selected = company === active;

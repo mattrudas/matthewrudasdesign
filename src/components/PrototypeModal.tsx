@@ -7,16 +7,20 @@ type PrototypeModalProps = {
   title: string;
   url: string;
   onClose: () => void;
+  /** "full" = near full screen (prototypes); "media" = narrow portrait (Instagram embeds). */
+  variant?: "full" | "media";
 };
 
 /**
- * Near-full-screen modal that loads a live prototype in an iframe,
- * over a strong dark scrim. Rendered only while open.
+ * Modal that loads a live prototype (near full screen) or an embedded
+ * video (narrow portrait) in an iframe, over a strong dark scrim.
+ * Rendered only while open.
  */
 export default function PrototypeModal({
   title,
   url,
   onClose,
+  variant = "full",
 }: PrototypeModalProps) {
   const titleId = useId();
 
@@ -44,7 +48,9 @@ export default function PrototypeModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="proto-modal flex h-full w-full flex-col overflow-hidden rounded-[20px] bg-card shadow-2xl"
+        className={`proto-modal flex h-full w-full flex-col overflow-hidden rounded-[20px] bg-card shadow-2xl ${
+          variant === "media" ? "max-h-[880px] max-w-[540px]" : ""
+        }`}
       >
         <div className="flex h-12 shrink-0 items-center justify-between border-b border-border pr-2 pl-5">
           <h2 id={titleId} className="text-sm text-foreground">
@@ -69,7 +75,7 @@ export default function PrototypeModal({
         </div>
         <iframe
           src={url}
-          title={`${title} prototype`}
+          title={variant === "media" ? `${title} video` : `${title} prototype`}
           className="h-full w-full flex-1 border-0 bg-white"
         />
       </div>

@@ -9,6 +9,7 @@ import PrototypeModal from "./PrototypeModal";
 export default function ProjectItem({ project }: { project: Project }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [protoOpen, setProtoOpen] = useState(false);
+  const [videoOpen, setVideoOpen] = useState(false);
 
   return (
     <Reveal as="article">
@@ -45,14 +46,27 @@ export default function ProjectItem({ project }: { project: Project }) {
           </p>
         </div>
 
-        {project.tryUrl ? (
-          <button
-            type="button"
-            onClick={() => setProtoOpen(true)}
-            className="mt-4 inline-flex items-center rounded-full bg-button px-4 py-1.5 text-sm text-button-contrast transition-opacity hover:opacity-85 active:opacity-70"
-          >
-            Try it out
-          </button>
+        {project.tryUrl || project.videoUrl ? (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {project.tryUrl ? (
+              <button
+                type="button"
+                onClick={() => setProtoOpen(true)}
+                className="inline-flex items-center rounded-full bg-button px-4 py-1.5 text-sm text-button-contrast transition-opacity hover:opacity-85 active:opacity-70"
+              >
+                Try it out
+              </button>
+            ) : null}
+            {project.videoUrl ? (
+              <button
+                type="button"
+                onClick={() => setVideoOpen(true)}
+                className="inline-flex items-center rounded-full border border-border px-4 py-1.5 text-sm text-foreground transition-colors hover:bg-surface active:opacity-70"
+              >
+                See how it works
+              </button>
+            ) : null}
+          </div>
         ) : null}
       </div>
 
@@ -61,6 +75,15 @@ export default function ProjectItem({ project }: { project: Project }) {
           title={project.title}
           url={project.tryUrl}
           onClose={() => setProtoOpen(false)}
+        />
+      ) : null}
+
+      {videoOpen && project.videoUrl ? (
+        <PrototypeModal
+          title={project.title}
+          url={project.videoUrl}
+          variant="media"
+          onClose={() => setVideoOpen(false)}
         />
       ) : null}
 

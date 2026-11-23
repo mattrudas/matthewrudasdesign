@@ -147,6 +147,8 @@ export type Project = {
   image: string;
   /** Optional link to a live, clickable prototype ("Try it out"). */
   tryUrl?: string;
+  /** Optional embeddable video ("See how it works"), e.g. an Instagram /embed URL. */
+  videoUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -171,6 +173,8 @@ export const projects: Project[] = [
     image: "/work/nova-profile.png",
     // Coded prototype: Career page (index) and Profile page
     tryUrl: "https://novaproto.vercel.app/profile.html",
+    // Instagram post DfYFQXqAbz- (embed version so it plays in the modal)
+    videoUrl: "https://www.instagram.com/p/DfYFQXqAbz-/embed/",
   },
   {
     slug: "nova-collaborative-projects",

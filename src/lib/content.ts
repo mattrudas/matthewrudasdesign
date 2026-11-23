@@ -5,8 +5,8 @@
 
 export const site = {
   name: "Matthew Rudas",
-  role: "Lead Designer",
-  company: "Checkmate",
+  role: "Senior Product Designer",
+  company: "NOVA",
   email: "hello@matthewrudas.design",
   resumeUrl:
     "https://drive.google.com/file/d/1c6h0eZeVWwsXaqk_hoof4p_-_CrA7DD_/view?usp=sharing",
@@ -79,10 +79,11 @@ export const intro = {
   headingLead: "Hello! I am ",
   /** Rendered in the accent (green) color. */
   headingName: "Matthew Rudas,",
-  headingRest: " a lead designer at Checkmate and a nice guy.",
+  headingRest: " a senior product designer at NOVA and a nice guy.",
   paragraphs: [
     "I took a leave of absence at [UCLA Law School](https://law.ucla.edu/) 5 years ago and started an apprenticeship with an agency that helps early stage designers and start ups called [Upperstudy](https://upperstudy.com/).",
-    "I was paired with a team of 3 cofounders to lead design for a company called [Checkmate](https://joincheckmate.com/). We now have over 2 millions users, reach hundreds of thousands people a day, have a growing team of 30, and are driving significant revenue.",
+    "I was paired with a team of 3 cofounders to lead design for a company called [Checkmate](https://joincheckmate.com/). We grew to over 2 million users, reached hundreds of thousands of people a day, built a team of 30, and drove significant revenue.",
+    "I'm currently working with a small team at [NOVA](https://itsnova.com/), where we're working on building a network that connects creative talent with top jobs in the industry. The platform has connected creatives with over $100M in projects and aspires to build a better place for all professionals doing project based work.",
     "I have been learning quickly, failing often, and building new things every single day. Over the years, Checkmate has grown and myself alongside it. I love the challenge of starting from scratch and seeing products transform.",
   ],
 } as const;
@@ -120,6 +121,14 @@ export const hoverCards: Record<string, HoverCard> = {
     badge: "/hover/checkmate-logo.svg",
     imageFit: "cover",
   },
+  NOVA: {
+    image: "/hover/nova-photo.png",
+    caption:
+      "Where I design how brands and creatives find, hire, and work with each other.",
+    badge: "/hover/nova-logo.svg",
+    imageFit: "cover",
+    embedUrl: "https://itsnova.com/",
+  },
 };
 
 export type Project = {
@@ -133,6 +142,15 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "nova",
+    title: "NOVA",
+    tags: "product design, design systems, iOS, web",
+    period: "2026 - Present",
+    description:
+      "Designing NOVA's network connecting creative talent with top jobs in the industry, across iOS and web.",
+    image: "/work/nova.png",
+  },
   {
     slug: "app",
     title: "Checkmate App",

@@ -13,6 +13,7 @@
   --description: #5f6368; /* project descriptions */
   --border: #e5e5e5;
   --surface: #efeeec;
+  --card: #ffffff; /* right-hand work panel */
   --accent: #005c15; /* highlighted name */
   --button: #000000;
   --button-contrast: #ffffff;
@@ -28,6 +29,7 @@
   --color-description: var(--description);
   --color-border: var(--border);
   --color-surface: var(--surface);
+  --color-card: var(--card);
   --color-accent: var(--accent);
   --color-button: var(--button);
   --color-button-contrast: var(--button-contrast);

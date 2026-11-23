@@ -76,10 +76,10 @@ export const about = {
  * Labels matching `hoverCards` keys get a preview card on hover.
  */
 export const intro = {
-  headingLead: "Hello! I am ",
+  headingLead: "Hi! I'm ",
   /** Rendered in the accent (green) color. */
   headingName: "Matthew Rudas,",
-  headingRest: " a senior product designer at NOVA and a nice guy.",
+  headingRest: " currently designing for creatives at NOVA.",
   paragraphs: [
     "I took a leave of absence at [UCLA Law School](https://law.ucla.edu/) 5 years ago and started an apprenticeship with an agency that helps early stage designers and start ups called [Upperstudy](https://upperstudy.com/).",
     "I was paired with a team of 3 cofounders to lead design for a company called [Checkmate](https://joincheckmate.com/). We grew to over 2 million users, reached hundreds of thousands of people a day, built a team of 30, and drove significant revenue.",
@@ -144,6 +144,8 @@ export type Project = {
   description: string;
   /** Exported mockup image placed in /public/work. */
   image: string;
+  /** Optional link to a live, clickable prototype ("Try it out"). */
+  tryUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -156,6 +158,8 @@ export const projects: Project[] = [
     description:
       "Redesigning profiles into one unified experience for clients and creatives across iOS and web, built to show credentials and feel credible at a glance.",
     image: "/work/nova.png",
+    // Coded prototype: Career page (index) and Profile page
+    tryUrl: "https://novaproto.vercel.app/profile.html",
   },
   {
     slug: "nova-projects",

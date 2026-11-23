@@ -16,9 +16,10 @@ export default function AboutPage() {
         <SiteHeader pathname="/about" />
       </div>
 
-      <div className="flex min-h-dvh items-center justify-center px-4 py-6 sm:px-6">
-        <div className="flex w-full max-w-[800px] flex-col gap-3">
-          <article className="w-full rounded-[12px] bg-white p-6">
+      {/* Desktop: contained to the screen height; the letter scrolls inside its card (same as the home work panel) */}
+      <div className="flex min-h-dvh items-center justify-center px-4 py-6 sm:px-6 lg:h-dvh lg:min-h-0 lg:py-3">
+        <div className="flex w-full max-w-[800px] flex-col gap-3 lg:h-full">
+          <article className="w-full rounded-[20px] bg-card p-6 lg:min-h-0 lg:flex-1 lg:overflow-y-auto lg:overscroll-contain">
             <div className="flex items-center gap-6">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -26,9 +27,9 @@ export default function AboutPage() {
                 alt={site.name}
                 width={80}
                 height={80}
-                className="h-20 w-20 shrink-0 object-cover"
+                className="h-20 w-20 shrink-0 rounded-[12px] object-cover"
               />
-              <div className="flex flex-col gap-2 text-[12pt] font-medium leading-[normal]">
+              <div className="flex flex-col gap-2 text-[15px] font-medium leading-[normal]">
                 <h1 className="text-foreground">{site.name}</h1>
                 <p className="text-[#656565]">{about.role}</p>
               </div>
@@ -36,11 +37,11 @@ export default function AboutPage() {
 
             <hr className="mt-4 border-0 border-t border-border" />
 
-            <p className="mt-4 text-[12pt] font-medium leading-[normal] text-accent">
+            <p className="mt-4 text-[15px] font-medium leading-[normal] text-accent">
               {about.date}
             </p>
 
-            <div className="mt-4 space-y-3 text-[12pt] font-light leading-[normal] text-foreground">
+            <div className="mt-4 space-y-3 text-[15px] font-light leading-[normal] text-foreground">
               {about.paragraphs.map((paragraph, i) => (
                 <p key={i}>
                   <RichText text={paragraph} />
@@ -48,12 +49,12 @@ export default function AboutPage() {
               ))}
             </div>
 
-            <p className="mt-3 text-[12pt] leading-[normal] text-[#656565]">
+            <p className="mt-3 text-[15px] leading-[normal] text-[#656565]">
               {about.signOff}
             </p>
           </article>
 
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div className="grid shrink-0 grid-cols-2 gap-3 sm:grid-cols-4">
             {about.photos.map((src) => (
               // eslint-disable-next-line @next/next/no-img-element
               <img

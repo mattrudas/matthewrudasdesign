@@ -1,8 +1,8 @@
 import Sidebar from "@/components/Sidebar";
-import ProjectItem from "@/components/ProjectItem";
+import WorkFeed from "@/components/WorkFeed";
 import AboutHashRedirect from "@/components/AboutHashRedirect";
 import SiteHeader from "@/components/SiteHeader";
-import { projects, site } from "@/lib/content";
+import { site } from "@/lib/content";
 
 export default function Home() {
   const jsonLd = {
@@ -26,11 +26,7 @@ export default function Home() {
         </div>
 
         <main id="resume" className="min-w-0 lg:pb-6">
-          <div className="space-y-8">
-            {projects.map((project) => (
-              <ProjectItem key={project.slug} project={project} />
-            ))}
-          </div>
+          <WorkFeed />
         </main>
       </div>
 

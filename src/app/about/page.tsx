@@ -54,19 +54,7 @@ export default function AboutPage() {
             </p>
           </article>
 
-          <div className="grid shrink-0 grid-cols-2 gap-3 sm:grid-cols-4">
-            {about.photos.map((src) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                key={src}
-                src={src}
-                alt=""
-                width={191}
-                height={120}
-                className="h-[120px] w-full rounded-lg object-cover"
-              />
-            ))}
-          </div>
+          {/* Photo strip (about.photos) hidden for now */}
         </div>
       </div>
     </div>

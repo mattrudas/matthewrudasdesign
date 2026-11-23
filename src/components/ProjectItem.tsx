@@ -74,6 +74,7 @@ export default function ProjectItem({ project }: { project: Project }) {
         <PrototypeModal
           title={project.title}
           url={project.tryUrl}
+          variant={project.tryMobile ? "mobile" : "full"}
           onClose={() => setProtoOpen(false)}
         />
       ) : null}

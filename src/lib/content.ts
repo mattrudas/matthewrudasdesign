@@ -116,12 +116,12 @@ export const hoverCards: Record<string, HoverCard> = {
     embedUrl: "https://upperstudy.com/",
   },
   Checkmate: {
-    image: "/hover/checkmate-photo.svg",
+    // Static screenshot: joincheckmate.com blocks iframe embeds, so the live preview can't load.
+    image: "/hover/checkmate-site.jpg",
     caption:
       "Going #1 in the app store twice, raising 3 rounds of funding, and building a design team.",
     badge: "/hover/checkmate-logo.svg",
     imageFit: "cover",
-    embedUrl: "https://joincheckmate.com/",
   },
   NOVA: {
     image: "/hover/nova-photo.png",

@@ -111,7 +111,7 @@ export const hoverCards: Record<string, HoverCard> = {
     image: "/hover/upperstudy-photo.png",
     caption:
       "Where I started my design career, building 0 to 1 at early stage startups.",
-    badge: "/hover/upperstudy-seal.png",
+    badge: "/hover/upperstudy-dot.svg",
     imageFit: "cover",
     embedUrl: "https://upperstudy.com/",
   },

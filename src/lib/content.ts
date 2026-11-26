@@ -9,7 +9,7 @@ export const site = {
   company: "NOVA",
   email: "hello@matthewrudas.design",
   resumeUrl:
-    "https://drive.google.com/file/d/1c6h0eZeVWwsXaqk_hoof4p_-_CrA7DD_/view?usp=sharing",
+    "https://drive.google.com/file/d/1xIkWlLrRPFxq3FYTQofKqzVfF_rAcdPT/view?usp=sharing",
   /** Avatar GIF used in the top nav (home link). */
   avatar: "/avatar.gif",
   /** Portrait on the About letter card. */
@@ -20,7 +20,7 @@ export const nav = [
   { label: "About", href: "/about" },
   {
     label: "Resume",
-    href: "https://drive.google.com/file/d/1c6h0eZeVWwsXaqk_hoof4p_-_CrA7DD_/view?usp=sharing",
+    href: "https://drive.google.com/file/d/1xIkWlLrRPFxq3FYTQofKqzVfF_rAcdPT/view?usp=sharing",
   },
 ] as const;
 
@@ -111,7 +111,7 @@ export const hoverCards: Record<string, HoverCard> = {
     image: "/hover/upperstudy-photo.png",
     caption:
       "Where I started my design career, building 0 to 1 at early stage startups.",
-    badge: "/hover/upperstudy-seal.png",
+    badge: "/hover/upperstudy-dot.svg",
     imageFit: "cover",
     embedUrl: "https://upperstudy.com/",
   },

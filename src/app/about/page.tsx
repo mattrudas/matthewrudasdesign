@@ -17,7 +17,7 @@ export default function AboutPage() {
       </div>
 
       {/* Desktop: contained to the screen height; the letter scrolls inside its card (same as the home work panel) */}
-      <div className="flex min-h-dvh items-center justify-center px-4 py-6 sm:px-6 lg:h-dvh lg:min-h-0 lg:py-3">
+      <div className="flex min-h-dvh items-start justify-center px-4 pt-[88px] pb-6 sm:px-6 lg:h-dvh lg:min-h-0 lg:items-center lg:py-3">
         <div className="flex w-full max-w-[800px] flex-col gap-3 lg:h-full">
           <article className="w-full rounded-[20px] bg-card p-6 lg:min-h-0 lg:flex-1 lg:overflow-y-auto lg:overscroll-contain">
             <AboutLetter />

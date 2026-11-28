@@ -159,7 +159,7 @@ export const projects: Project[] = [
     slug: "nova-career",
     company: "NOVA",
     title: "NOVA Career / Website Redesign",
-    tags: "product design, iOS, web, interactive prototyping, AI tools (Claude Code)",
+    tags: "product design, iOS, web, interactive prototyping, Claude Code",
     period: "2026 - Present",
     description:
       "Designing the Career hub where creatives keep track of their project credits, clients, and collaborators in one place.",
@@ -173,7 +173,7 @@ export const projects: Project[] = [
     slug: "nova-profile",
     company: "NOVA",
     title: "NOVA Profile",
-    tags: "product design, iOS, web, design systems, interactive prototyping, AI tools (Claude Code)",
+    tags: "product design, iOS, web, design systems, interactive prototyping, Claude Code",
     period: "2026 - Present",
     description:
       "Redesigning profiles into one unified experience for clients and creatives across iOS and web, built to show credentials and feel credible at a glance.",
@@ -185,7 +185,7 @@ export const projects: Project[] = [
     slug: "nova-collaborative-projects",
     company: "NOVA",
     title: "Collaborative Projects / Shared Network",
-    tags: "product design, interactive prototyping, AI tools (Claude Code)",
+    tags: "product design, interactive prototyping, Claude Code",
     period: "2026 - Present",
     description:
       "Designing how creatives and brands build, credit, and share projects together.",
